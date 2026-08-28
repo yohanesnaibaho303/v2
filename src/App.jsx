@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 
 const profile = {
-  name: 'Yohanes Pratama Naibaho',
   role: 'Software Engineer',
   intro: 'I build scalable systems across the stack, with a focus on performance, clean architecture, and measurable engineering outcomes.',
   email: 'yohanespratama303@gmail.com',
