@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+
 const profile = {
   name: 'Alex Morgan',
   role: 'Frontend Engineer',
@@ -53,10 +55,20 @@ function TagList({ items }) {
 }
 
 function App() {
+  const glow = useRef(null)
+
   return (
     <>
       <a className="skip-link" href="#content">Skip to content</a>
-      <div className="page-shell">
+      <div
+        className="page-shell"
+        onPointerEnter={() => { glow.current.style.opacity = '1' }}
+        onPointerLeave={() => { glow.current.style.opacity = '0' }}
+        onPointerMove={({ clientX, clientY }) => {
+          glow.current.style.transform = `translate3d(${clientX - 300}px, ${clientY - 300}px, 0)`
+        }}
+      >
+        <div ref={glow} className="cursor-glow" aria-hidden="true" />
         <header className="site-header">
           <a className="wordmark" href="#top" aria-label="Home">AM</a>
           <nav aria-label="In-page navigation">
