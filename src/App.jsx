@@ -45,31 +45,53 @@ const experience = [
 
 const projects = [
   {
-    type: 'Platform engineering',
-    title: 'QLola Corporate Banking',
-    description: 'A high-traffic enterprise banking platform with shared microfrontends, reusable UI foundations, and multilingual support including Chinese.',
-    tags: ['Next.js', 'React', 'i18next'],
+    type: 'Technical writing · Part 1',
+    title: 'Micro Frontend Architecture: Concepts & Design Patterns',
+    href: 'https://medium.com/@yohanespratama303/micro-frontend-dengan-module-federation-2-0-part-1-konsep-arsitektur-57ca1bb83367',
+    description: 'An introduction to when micro frontends fit, how host and remote applications work, and what Module Federation 2.0 adds to React and Vite systems.',
+    tags: ['Micro Frontends', 'React', 'Vite', 'Module Federation 2.0'],
   },
   {
-    type: 'Global manufacturing',
-    title: 'Factova MES+ & Smart Factory',
-    description: 'Enterprise manufacturing systems deployed across PT HLI Green Power and more than 10 global factory sites.',
-    tags: ['.NET', 'Spring Boot', 'Oracle'],
+    type: 'Technical writing · Part 2',
+    title: 'Implementing Micro Frontends with Module Federation 2.0',
+    href: 'https://medium.com/@yohanespratama303/microfrontend-architecture-in-react-with-vite-module-federation-part-2-id-e482e9c3ae47',
+    description: 'A hands-on guide to building a Vite monorepo with remote-to-remote modules, shared routing, Tailwind CSS, error boundaries, and TypeScript.',
+    tags: ['Module Federation 2.0', 'Vite', 'TypeScript', 'Tailwind CSS'],
   },
   {
     type: 'Academic project',
     title: 'English–Batak Toba Dictionary',
-    href: 'https://yohanes-portfolioo.netlify.app',
+    href: 'https://bataktoba-english-dictionary.netlify.app/',
     description: 'A user-friendly dictionary with fuzzy search and speech synthesis, built as my final university project.',
     tags: ['Vue.js', 'Fuse.js', 'Web Speech API'],
+  },
+  {
+    type: 'Machine learning experiment',
+    title: 'Self-Driving Car',
+    href: 'https://github.com/yohanesnaibaho303/self-driving-car',
+    description: 'A browser-based self-driving car simulation that explores neural networks and machine learning with vanilla JavaScript.',
+    tags: ['JavaScript', 'Neural Networks', 'Machine Learning', 'Simulation'],
+  },
+  {
+    type: 'Computer vision experiment',
+    title: 'Object Detection with JavaScript',
+    href: 'https://github.com/yohanesnaibaho303/object-detection-machinelearning',
+    description: 'A browser-based object detection experiment built in JavaScript without an external machine learning library.',
+    tags: ['JavaScript', 'Object Detection', 'Machine Learning', 'Computer Vision'],
   },
 ]
 
 const skills = [
-  { group: 'Languages', items: ['JavaScript / TypeScript', 'Python', 'C#', 'Java', 'Go', 'PHP', 'SQL'] },
-  { group: 'Frontend', items: ['React', 'Next.js', 'Vue.js', 'Tailwind CSS', 'shadcn', 'Storybook', 'Vite'] },
-  { group: 'Systems & backend', items: ['Node.js', '.NET', 'Spring Boot', 'Microfrontends', 'Microservices', 'REST APIs', 'Docker'] },
-  { group: 'Quality & observability', items: ['Jest', 'Selenium', 'Katalon', 'JMeter', 'k6', 'Datadog', 'Grafana'] },
+  { group: 'Languages & web', items: ['JavaScript', 'TypeScript', 'Python', 'C#', 'Java', 'Go', 'PHP', 'Kotlin', 'SQL', 'HTML5', 'CSS'] },
+  { group: 'Frontend', items: ['React', 'Next.js', 'Vue.js', 'Tailwind CSS', 'shadcn/ui', 'Bootstrap', 'Storybook', 'Redux', 'TanStack Query', 'React Hook Form', 'Zod', 'i18next', 'Highcharts', 'Wijmo'] },
+  { group: 'Backend & CMS', items: ['Node.js', '.NET', 'Spring Boot', 'Spring Framework', 'Laravel', 'REST APIs', 'WordPress', 'Sanity', 'Voyager CMS'] },
+  { group: 'Architecture & systems', items: ['System Design', 'Microfrontends', 'Module Federation', 'Microservices', 'Clean Architecture', 'WPF', 'IoT', 'MQTT', 'Solace', 'BizActor'] },
+  { group: 'Data & storage', items: ['SQL Server', 'Oracle', 'PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Data Analytics'] },
+  { group: 'Quality & observability', items: ['Jest', 'Selenium', 'Katalon', 'JMeter', 'k6', 'SonarQube', 'Datadog', 'Grafana', 'Performance & Load Testing'] },
+  { group: 'Platform & delivery', items: ['Docker', 'Git', 'CI/CD', 'Vite', 'Webpack', 'AWS', 'Google Cloud', 'Tencent Cloud', 'Jira', 'Confluence', 'n8n', 'Agile', 'Scrum'] },
+  { group: 'Applied ML & graphics', items: ['Machine Learning', 'Neural Networks', 'Object Detection', 'Computer Vision', 'AI & LLM', 'OpenGL', 'Fuse.js', 'Web Speech API'] },
+  { group: 'Product & domain', items: ['UI/UX', 'Product UI', 'Manufacturing Execution Systems', 'Smart Factory', 'Battery Manufacturing'] },
+  { group: 'Ways of working', items: ['Communication', 'Problem Solving', 'Collaboration', 'Adaptability', 'Ownership', 'Time Management', 'Attention to Detail'] },
 ]
 
 const navigation = ['about', 'experience', 'work', 'skills']
