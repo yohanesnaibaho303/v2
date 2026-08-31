@@ -3,7 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0b1220" />
+    <meta name="theme-color" content="#050505" />
+    <script>
+      const theme = localStorage.getItem('theme') || 'dark'
+      document.documentElement.dataset.theme = theme
+      document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#050505' : '#f3f1eb'
+    </script>
     <meta name="description" content="Portfolio of Yohanes Pratama Naibaho, a software engineer building scalable systems across the stack." />
     <link rel="preload" href="/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
     <title>Yohanes Pratama Naibaho — Software Engineer</title>
