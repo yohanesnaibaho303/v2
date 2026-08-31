@@ -176,23 +176,27 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
 
 @media (max-width: 760px) {
   .site-header { height: 4.5rem; }
-  .header-inner { grid-template-columns: auto 1fr auto; }
+  .header-inner { grid-template-columns: auto 1fr auto; column-gap: .75rem; }
   .header-inner, main, footer { width: calc(100% - 2rem); }
   nav { justify-self: end; }
   nav ol { gap: .9rem; }
   nav a { font-size: .58rem; }
   .header-email { display: none; }
-  .hero { min-height: calc(100vh - 4.5rem); padding-top: 4rem; scroll-margin-top: 4.5rem; }
+  .theme-toggle { width: 2.5rem; height: 2.5rem; }
+  .hero { min-height: auto; padding: 3rem 0 2.5rem; scroll-margin-top: 4.5rem; }
   .hero-kicker { align-items: flex-start; flex-direction: column; gap: .4rem; }
   h1 { margin: 3rem 0; font-size: clamp(3.7rem, 18vw, 6rem); line-height: .86; }
   h1 span:last-child { margin-left: 0; }
   .hero-footer, .quick-facts { grid-template-columns: 1fr; }
+  .hero-footer { gap: 2rem; }
   .quick-facts { gap: 1rem; }
-  .section-block { grid-template-columns: 1fr; gap: 3rem; padding: 5.5rem 0; scroll-margin-top: 4.5rem; }
+  .section-block { grid-template-columns: 1fr; gap: 2.5rem; padding: 4.5rem 0; scroll-margin-top: 4.5rem; }
+  .experience-item { padding: 1.75rem 0; }
   .experience-title { grid-template-columns: 1fr; gap: .5rem; }
   .summary, .tags { margin-left: 0; }
-  .project-row { grid-template-columns: 2.5rem 1fr; }
+  .project-row { grid-template-columns: 2.5rem 1fr; padding: 2rem 0; }
   .skill-grid { grid-template-columns: 1fr; }
+  .skill-group { padding: 1.75rem 0; }
   .skill-group:nth-child(odd) { border-right: 0; }
   .skill-group:nth-child(even) { padding-left: 0; }
   footer { grid-template-columns: 1fr auto; gap: 1.5rem; padding: 3rem 0; }
@@ -200,9 +204,9 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
 }
 
 @media (max-width: 420px) {
-  nav ol { gap: .65rem; }
-  nav a { font-size: .52rem; letter-spacing: .04em; }
-  .project-row { grid-template-columns: 1fr; }
+  nav ol { gap: .55rem; }
+  nav a { letter-spacing: .03em; }
+  .project-row { grid-template-columns: 1fr; gap: .75rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
