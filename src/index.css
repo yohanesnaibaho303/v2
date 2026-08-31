@@ -128,6 +128,7 @@ h1 span:last-child { margin-left: clamp(1rem, 8vw, 6rem); }
 .quick-facts dd { margin: 0; color: var(--detail); font-size: .78rem; line-height: 1.5; }
 
 .section-block { display: grid; grid-template-columns: 13rem 1fr; gap: clamp(3rem, 8vw, 8rem); padding: 8rem 0; border-bottom: 1px solid var(--line); scroll-margin-top: 5.5rem; }
+.section-heading { position: sticky; top: 7rem; align-self: start; }
 .section-heading p { margin-bottom: 1rem; color: var(--accent); font-size: .7rem; font-weight: 700; }
 .section-heading h2 { margin: 0; color: var(--paper); font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 550; letter-spacing: -.04em; }
 .section-content { min-width: 0; }
@@ -190,7 +191,8 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   .hero-footer, .quick-facts { grid-template-columns: 1fr; }
   .hero-footer { gap: 2rem; }
   .quick-facts { gap: 1rem; }
-  .section-block { grid-template-columns: 1fr; gap: 2.5rem; padding: 4.5rem 0; scroll-margin-top: 4.5rem; }
+  .section-block { display: block; padding: 4.5rem 0; scroll-margin-top: 4.5rem; }
+  .section-heading { z-index: 10; top: 5.5rem; margin-bottom: 2.5rem; background: var(--background); }
   .experience-item { padding: 1.75rem 0; }
   .experience-title { grid-template-columns: 1fr; gap: .5rem; }
   .summary, .tags { margin-left: 0; }
