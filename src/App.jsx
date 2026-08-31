@@ -95,13 +95,15 @@ function App() {
         <div ref={glow} className="cursor-glow" aria-hidden="true" />
 
         <header className="site-header">
-          <a className="wordmark" href="#top" aria-label="Home">YPN<span>®</span></a>
-          <nav aria-label="In-page navigation">
-            <ol>
-              {navigation.map((item) => <li key={item}><a href={`#${item}`}>{item}</a></li>)}
-            </ol>
-          </nav>
-          <a className="header-email" href={`mailto:${profile.email}`}>Email ↗</a>
+          <div className="header-inner">
+            <a className="wordmark" href="#top" aria-label="Home">YPN<span>®</span></a>
+            <nav aria-label="In-page navigation">
+              <ol>
+                {navigation.map((item) => <li key={item}><a href={`#${item}`}>{item}</a></li>)}
+              </ol>
+            </nav>
+            <a className="header-email" href={`mailto:${profile.email}`}>Email ↗</a>
+          </div>
         </header>
 
         <main id="content">
