@@ -3,6 +3,7 @@ import { Fragment, useEffect, useRef, useState } from 'react'
 const profile = {
   email: 'yohanespratama303@gmail.com',
   socials: [
+    { label: 'v1', href: 'https://yohanes-portfolioo.netlify.app/' },
     { label: 'GitHub', href: 'https://github.com/yohanesnaibaho303' },
     { label: 'LinkedIn', href: 'https://linkedin.com/in/yohanesnaibaho' },
     { label: 'npm', href: 'https://npmjs.com/~joethegreatest' },
@@ -260,6 +261,14 @@ const skills = [
 ]
 
 const navigation = ['about', 'experience', 'work', 'skills']
+const geometryCount = 3
+
+function getInitialGeometry() {
+  const previous = Number(sessionStorage.getItem('hero-geometry'))
+  return Number.isInteger(previous) && previous >= 0 && previous < geometryCount
+    ? (previous + 1) % geometryCount
+    : Math.floor(Math.random() * geometryCount)
+}
 
 function InkText({ children, language }) {
   const segments = [...new Intl.Segmenter(language, { granularity: 'word' }).segment(children)]
@@ -286,11 +295,13 @@ function TagList({ items, label }) {
 
 function App() {
   const glow = useRef(null)
+  const atmosphere = useRef(null)
   const mobileMenu = useRef(null)
   const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || 'dark')
   const [language, setLanguage] = useState(() => translations[localStorage.getItem('language')] ? localStorage.getItem('language') : 'en')
   const [headerVisible, setHeaderVisible] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [geometry, setGeometry] = useState(getInitialGeometry)
   const copy = translations[language]
   const localizedContent = contentTranslations[language]
   const contentDirection = language === 'ar-SA' ? 'rtl' : 'ltr'
@@ -315,11 +326,32 @@ function App() {
   }, [])
 
   useEffect(() => {
+    sessionStorage.setItem('hero-geometry', geometry)
+  }, [geometry])
+
+  useEffect(() => {
+    const animateOnReturn = () => {
+      if (document.visibilityState === 'visible') setGeometry((current) => (current + 1) % geometryCount)
+    }
+    document.addEventListener('visibilitychange', animateOnReturn)
+    return () => document.removeEventListener('visibilitychange', animateOnReturn)
+  }, [])
+
+  useEffect(() => {
     let previousY = window.scrollY
+    const hero = atmosphere.current?.parentElement
+    let wasBelowHero = hero ? previousY > hero.offsetTop + hero.offsetHeight * .75 : false
 
     const handleScroll = () => {
       const currentY = window.scrollY
       const distance = currentY - previousY
+      const geometryThreshold = hero ? hero.offsetTop + hero.offsetHeight * .75 : Infinity
+
+      if (currentY > geometryThreshold) wasBelowHero = true
+      else if (wasBelowHero && distance < 0) {
+        setGeometry((current) => (current + 1) % geometryCount)
+        wasBelowHero = false
+      }
 
       if (currentY <= 16) {
         setHeaderVisible(true)
@@ -421,6 +453,11 @@ function App() {
 
         <main id="content">
           <section className="hero" id="top" aria-labelledby="hero-heading">
+            <div className="hero-atmosphere" ref={atmosphere} aria-hidden="true">
+              <div className="hero-orbits">
+                <div className="geometry-layer" data-geometry={geometry} key={geometry} />
+              </div>
+            </div>
             <p className="hero-kicker"><span>{copy.role}</span><span>{copy.location}</span></p>
             <h1 id="hero-heading"><span>Yohanes</span><span>Pratama Naibaho</span></h1>
             <div className="hero-footer">

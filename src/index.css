@@ -27,6 +27,9 @@
   --tag: #d0d0ca;
   --slash: #555;
   --glow: rgba(255, 255, 255, .075);
+  --hero-line: rgba(244, 244, 240, .1);
+  --hero-grid: rgba(244, 244, 240, .035);
+  --hero-accent: rgba(255, 90, 54, .16);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
@@ -43,6 +46,9 @@
   --tag: #45443f;
   --slash: #aaa69d;
   --glow: rgba(0, 0, 0, .06);
+  --hero-line: rgba(23, 23, 21, .11);
+  --hero-grid: rgba(23, 23, 21, .04);
+  --hero-accent: rgba(217, 71, 39, .13);
 }
 
 * { box-sizing: border-box; }
@@ -132,6 +138,8 @@ nav a, .header-email { color: var(--secondary); font-size: .72rem; font-weight: 
 .menu-toggle:active, .menu-close:active { transform: scale(.97); }
 
 .hero {
+  position: relative;
+  isolation: isolate;
   min-height: calc(100vh - 5.5rem);
   padding: clamp(5rem, 12vh, 9rem) 0 4rem;
   display: flex;
@@ -139,6 +147,83 @@ nav a, .header-email { color: var(--secondary); font-size: .72rem; font-weight: 
   justify-content: space-between;
   border-bottom: 1px solid var(--line);
   scroll-margin-top: 5.5rem;
+  overflow: clip;
+}
+.hero > :not(.hero-atmosphere) { position: relative; z-index: 1; }
+.hero-atmosphere {
+  position: absolute;
+  z-index: 0;
+  inset: 2rem -10rem 2rem 38%;
+  pointer-events: none;
+  mask-image: linear-gradient(90deg, transparent, #000 28%, #000 92%, transparent);
+}
+.hero-orbits {
+  position: absolute;
+  inset: 0;
+}
+.geometry-layer {
+  position: absolute;
+  inset: 0;
+  opacity: .9;
+  transform-origin: 68% 52%;
+  animation: geometry-enter 900ms var(--ease-out) both;
+  background:
+    radial-gradient(circle at 72% 25%, transparent 0 19.8%, var(--hero-line) 20% 20.15%, transparent 20.35%),
+    radial-gradient(circle at 38% 71%, transparent 0 27.8%, var(--hero-line) 28% 28.15%, transparent 28.35%),
+    radial-gradient(circle at 78% 78%, transparent 0 15.8%, var(--hero-line) 16% 16.15%, transparent 16.35%),
+    linear-gradient(90deg, transparent 49.9%, var(--hero-grid) 50%, transparent 50.1%),
+    linear-gradient(0deg, transparent 49.9%, var(--hero-grid) 50%, transparent 50.1%);
+  background-size: auto, auto, auto, 5rem 5rem, 5rem 5rem;
+}
+.geometry-layer[data-geometry="1"] {
+  background:
+    linear-gradient(28deg, transparent 49.85%, var(--hero-line) 50%, transparent 50.15%),
+    linear-gradient(-32deg, transparent 49.85%, var(--hero-line) 50%, transparent 50.15%),
+    repeating-linear-gradient(90deg, transparent 0 4.95rem, var(--hero-grid) 5rem),
+    repeating-linear-gradient(0deg, transparent 0 4.95rem, var(--hero-grid) 5rem);
+}
+.geometry-layer[data-geometry="2"] {
+  background:
+    conic-gradient(from 205deg at 68% 50%, transparent 0 21.8deg, var(--hero-line) 22deg 22.2deg, transparent 22.4deg 57.8deg, var(--hero-line) 58deg 58.2deg, transparent 58.4deg),
+    repeating-linear-gradient(135deg, transparent 0 3.95rem, var(--hero-grid) 4rem),
+    linear-gradient(90deg, transparent 49.85%, var(--hero-line) 50%, transparent 50.15%);
+}
+.geometry-layer::before {
+  content: "";
+  position: absolute;
+  inset: 17% -5% 12% 12%;
+  border: 1px solid var(--hero-line);
+  border-radius: 50%;
+  transform: rotate(-12deg);
+}
+.geometry-layer[data-geometry="1"]::before { inset: 22% 20% 18% 38%; border-radius: 0; transform: rotate(45deg) skew(-8deg, -8deg); }
+.geometry-layer[data-geometry="2"]::before { inset: 18% -4% 24% 28%; border-radius: 0; transform: rotate(-18deg) skewX(-12deg); }
+.geometry-layer::after {
+  content: "";
+  position: absolute;
+  width: min(28vw, 22rem);
+  aspect-ratio: 1;
+  top: 37%;
+  right: 22%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--hero-accent), transparent 68%);
+  filter: blur(12px);
+}
+.geometry-layer[data-geometry="1"]::after { top: 20%; right: 44%; }
+.geometry-layer[data-geometry="2"]::after { top: 45%; right: 12%; }
+@keyframes geometry-enter {
+  from { opacity: 0; transform: scale(.96) rotate(-4deg); }
+  to { opacity: .9; transform: scale(1) rotate(0deg); }
+}
+@supports (animation-timeline: scroll()) {
+  .hero-orbits {
+    animation: hero-orbits-scroll linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 100vh;
+  }
+  @keyframes hero-orbits-scroll {
+    to { transform: translate3d(0, 5%, 0) rotate(5deg) scale(1.025); }
+  }
 }
 .hero-kicker { display: flex; justify-content: space-between; color: var(--muted); font-size: .7rem; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
 h1, h2, h3, p { margin-top: 0; }
@@ -276,6 +361,7 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   .mobile-navigation a > span { color: var(--accent); font-size: .65rem; font-weight: 700; letter-spacing: .05em; }
   .mobile-menu-footer { width: calc(100% - 2rem); margin: auto auto 0; padding: 1.5rem 0 2rem; display: flex; justify-content: flex-end; color: var(--secondary); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
   .hero { min-height: auto; padding: 3rem 0 2.5rem; scroll-margin-top: 4.5rem; }
+  .hero-atmosphere { display: none; }
   .hero-kicker { align-items: flex-start; flex-direction: column; gap: .4rem; }
   h1 { margin: 3rem 0; font-size: clamp(3.7rem, 18vw, 6rem); line-height: .86; }
   h1 span:last-child { margin-inline-start: 0; }
@@ -308,6 +394,8 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   .skip-link, .text-link span, .project-copy h3 span { transition: none; }
   .text-link:hover span, .project-copy h3 a:hover span { transform: none; }
   .hero-kicker, .hero h1, .hero-footer { transform: none; transition: opacity 200ms ease; transition-delay: 0ms; }
+  .hero-orbits { animation: none; transform: none; }
+  .geometry-layer { animation: geometry-fade 200ms ease both; transform: none; }
   .wordmark, .header-email, .theme-toggle, .text-link, .footer-email, .socials a, .project-copy h3 a, footer > a:last-child { transition: color 160ms ease, border-color 160ms ease; }
   .wordmark:active, .header-email:active, .text-link:active, .footer-email:active, .socials a:active, .project-copy h3 a:active, footer > a:last-child:active { transform: none; }
   .section-heading h2 [data-word] { color: var(--paper); }
@@ -317,4 +405,5 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   @starting-style {
     .hero-kicker, .hero h1, .hero-footer { opacity: 0; transform: none; }
   }
+  @keyframes geometry-fade { from { opacity: 0; } to { opacity: .9; } }
 }
