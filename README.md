@@ -1,60 +1,59 @@
 # Yohanes Pratama Naibaho — Portfolio
 
-Portfolio pribadi [Yohanes Pratama Naibaho](https://yohanesnaibaho.com/) yang menampilkan profil, pengalaman kerja, proyek pilihan, dan keahlian teknis.
+Personal portfolio of [Yohanes Pratama Naibaho](https://yohanesnaibaho.com/), showcasing his profile, work experience, selected projects, and technical skills.
 
-## Fitur
+## Features
 
-- Dukungan enam bahasa: Inggris, Indonesia, Mandarin, Korea, Jepang, dan Arab
-- Tema terang dan gelap yang tersimpan di browser
-- Tampilan responsif untuk desktop dan perangkat mobile
-- Navigasi aksesibel dan dukungan `prefers-reduced-motion`
-- SEO metadata, sitemap, robots.txt, dan structured data
-- Resume PDF yang dapat dibuka langsung
+- Six languages: English, Indonesian, Chinese, Korean, Japanese, and Arabic
+- Light and dark themes persisted in the browser
+- Responsive layout for desktop and mobile devices
+- Accessible navigation and `prefers-reduced-motion` support
+- SEO metadata, sitemap, robots.txt, and structured data
+- Direct access to a PDF resume
 
-## Teknologi
+## Tech stack
 
 - React 19
 - Vite 8
 - CSS
 - Bun
 
-## Menjalankan secara lokal
+## Run locally
 
-Pastikan [Bun](https://bun.sh/) sudah terpasang, lalu jalankan:
+Install [Bun](https://bun.sh/), then run:
 
 ```bash
 bun install
 bun run dev
 ```
 
-Buka alamat yang ditampilkan Vite di terminal.
+Open the address displayed by Vite in the terminal.
 
-## Build produksi
+## Production build
 
 ```bash
 bun run build
 bun run preview
 ```
 
-Hasil build tersedia di folder `dist`.
+The build output is available in the `dist` directory.
 
-## Struktur utama
+## Project structure
 
 ```text
-src/App.jsx       Konten dan komponen portfolio
-src/index.css     Styling, tema, dan layout responsif
-public/           Font, favicon, resume, sitemap, dan robots.txt
-index.html        Metadata dan entry point aplikasi
+src/App.jsx       Portfolio content and components
+src/index.css     Styles, themes, and responsive layout
+public/           Font, favicon, resume, sitemap, and robots.txt
+index.html        Metadata and application entry point
 ```
 
-## Kustomisasi
+## Customization
 
-- Ubah profil, pengalaman, proyek, keahlian, dan terjemahan di `src/App.jsx`.
-- Ubah warna, tipografi, dan layout di `src/index.css`.
-- Ganti resume di `public/Yohanes-Pratama-Naibaho-resume.pdf`.
-- Sesuaikan metadata dan URL situs di `index.html`, `public/sitemap.xml`, dan `public/robots.txt`.
+- Edit the profile, experience, projects, skills, and translations in `src/App.jsx`.
+- Edit colors, typography, and layout in `src/index.css`.
+- Replace the resume at `public/Yohanes-Pratama-Naibaho-resume.pdf`.
+- Update metadata and site URLs in `index.html`, `public/sitemap.xml`, and `public/robots.txt`.
 
-## Lisensi
+## License
 
-Proyek ini menggunakan [MIT License](LICENSE). Anda boleh menyalin, menggunakan, mengubah, dan mendistribusikan proyek ini selama tetap menyertakan pemberitahuan hak cipta dan lisensinya.
-
+This project is licensed under the [MIT License](LICENSE). You may copy, use, modify, and distribute it as long as the copyright and license notices are retained.
