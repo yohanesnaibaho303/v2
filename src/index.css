@@ -242,6 +242,9 @@ h1 span:last-child { margin-inline-start: clamp(1rem, 8vw, 6rem); }
   .hero-kicker, .hero h1, .hero-footer { opacity: 0; transform: translateY(8px); }
 }
 .intro { max-width: 34rem; margin: 0; font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1.5; letter-spacing: -.02em; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem; font-size: .72rem; font-weight: 650; text-transform: uppercase; letter-spacing: .06em; }
+.hero-actions a { padding-bottom: .25rem; border-bottom: 1px solid var(--line); }
+.hero-actions span { display: inline-block; transition: transform 160ms var(--ease-out); }
 .quick-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 0; }
 .quick-facts div { border-top: 1px solid var(--line); padding-top: .8rem; }
 .quick-facts dt { margin-bottom: .45rem; color: var(--muted); font-size: .62rem; font-weight: 650; letter-spacing: .1em; text-transform: uppercase; }
@@ -323,6 +326,8 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
 
 @media (hover: hover) and (pointer: fine) {
   nav a:hover, .header-email:hover, footer a:hover { color: var(--accent); }
+  .hero-actions a:hover { color: var(--accent); }
+  .hero-actions a:hover span { transform: translate(.15rem, -.15rem); }
   .text-link:hover span, .project-copy h3 a:hover span { transform: translate(.18rem, -.18rem); }
   .project-copy h3 a:hover { color: var(--accent); }
 }
