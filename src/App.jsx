@@ -281,7 +281,7 @@ function App() {
       >
         <div ref={glow} className="cursor-glow" aria-hidden="true" />
 
-        <header className="site-header" data-hidden={headerVisible ? undefined : ''}>
+        <header className="site-header" data-hidden={headerVisible ? undefined : ''} onFocusCapture={() => setHeaderVisible(true)}>
           <div className="header-inner">
             <a className="wordmark" href="#top" aria-label={copy.home}>YPN<span>®</span></a>
             <nav aria-label={copy.navigation}>
