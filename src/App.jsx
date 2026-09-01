@@ -89,6 +89,94 @@ const translations = {
   },
 }
 
+const contentTranslations = {
+  id: {
+    experience: [
+      'Membangun QLola, platform corporate banking dengan traffic tinggi. Merancang shared microfrontend framework, component library, dan multilingual system yang digunakan oleh lebih dari 20 tim.',
+      'Memimpin pengembangan enterprise platform, MES, dan smart factory di lebih dari 10 lokasi global. Menangani reliability untuk cloud migration tiga tahap dengan availability 99,99% dan latency di bawah 52 ms.',
+      'Menerapkan automated UI dan API testing, reusable end-to-end test suites, performance testing, serta eksekusi CI/CD pada workflow QA yang sebelumnya manual.',
+      'Mengembangkan website full-stack untuk klien, dashboard inventory regional, serta Python automation untuk memigrasikan dan membersihkan lebih dari 10.000 data produk.',
+    ],
+    projectTypes: ['Tulisan teknis · Bagian 1', 'Tulisan teknis · Bagian 2', 'Proyek akademik', 'Eksperimen Machine Learning', 'Eksperimen Computer Vision'],
+    projects: [
+      'Pengantar tentang kapan microfrontends tepat digunakan, cara kerja host dan remote applications, serta kemampuan yang ditambahkan Module Federation 2.0 pada sistem React dan Vite.',
+      'Panduan praktis membangun Vite monorepo dengan remote-to-remote modules, shared routing, Tailwind CSS, error boundaries, dan TypeScript.',
+      'Kamus yang mudah digunakan dengan fuzzy search dan speech synthesis, dibuat sebagai proyek akhir universitas.',
+      'Simulasi self-driving car berbasis browser untuk mengeksplorasi Neural Networks dan Machine Learning menggunakan vanilla JavaScript.',
+      'Eksperimen Object Detection berbasis browser yang dibuat dengan JavaScript tanpa library Machine Learning eksternal.',
+    ],
+    skillGroups: ['Bahasa & web', 'Frontend', 'Backend & CMS', 'Arsitektur & sistem', 'Data & penyimpanan', 'Quality & observability', 'Platform & delivery', 'Applied ML & graphics', 'Produk & domain', 'Cara kerja'],
+  },
+  zh: {
+    experience: [
+      '参与构建高流量企业银行平台 QLola。设计了供 20 多个团队采用的 shared microfrontend framework、component library 和 multilingual system。',
+      '主导 10 多个全球站点的 enterprise platform、MES 和 smart factory 交付。负责三阶段 cloud migration 的 reliability，保持 99.99% availability 和低于 52 ms 的 latency。',
+      '在原本以手动为主的 QA workflow 中引入 automated UI 和 API testing、reusable end-to-end test suites、performance testing 及 CI/CD execution。',
+      '交付 full-stack 客户网站、区域 inventory dashboard，以及用于迁移和清理超过 10,000 条产品记录的 Python automation。',
+    ],
+    projectTypes: ['技术文章 · 第一部分', '技术文章 · 第二部分', '学术项目', 'Machine Learning 实验', 'Computer Vision 实验'],
+    projects: [
+      '介绍 microfrontends 的适用场景、host 与 remote applications 的工作方式，以及 Module Federation 2.0 为 React 和 Vite 系统带来的能力。',
+      '实践指南：使用 remote-to-remote modules、shared routing、Tailwind CSS、error boundaries 和 TypeScript 构建 Vite monorepo。',
+      '一款支持 fuzzy search 和 speech synthesis 的易用词典，作为大学毕业项目开发。',
+      '基于浏览器的 self-driving car 模拟，通过 vanilla JavaScript 探索 Neural Networks 和 Machine Learning。',
+      '使用 JavaScript 构建的浏览器端 Object Detection 实验，不依赖外部 Machine Learning library。',
+    ],
+    skillGroups: ['编程语言与 Web', 'Frontend', 'Backend 与 CMS', '架构与系统', '数据与存储', '质量与可观测性', '平台与交付', 'Applied ML 与图形', '产品与领域', '工作方式'],
+  },
+  ko: {
+    experience: [
+      '트래픽이 많은 기업 금융 플랫폼 QLola를 개발하고 있습니다. 20개 이상의 팀이 사용하는 shared microfrontend framework, component library, multilingual system을 설계했습니다.',
+      '10개 이상의 글로벌 사이트에서 enterprise platform, MES, smart factory 구축을 주도했습니다. 99.99% availability와 52 ms 미만의 latency를 유지한 3단계 cloud migration의 reliability를 담당했습니다.',
+      '기존 수동 QA workflow에 automated UI 및 API testing, reusable end-to-end test suites, performance testing, CI/CD execution을 도입했습니다.',
+      'full-stack 고객 웹사이트, 지역 inventory dashboard, 10,000개 이상의 제품 데이터를 이전하고 정리하는 Python automation을 구축했습니다.',
+    ],
+    projectTypes: ['기술 문서 · 1부', '기술 문서 · 2부', '학술 프로젝트', 'Machine Learning 실험', 'Computer Vision 실험'],
+    projects: [
+      'microfrontends가 적합한 시점, host와 remote applications의 동작 방식, Module Federation 2.0이 React 및 Vite 시스템에 추가하는 기능을 소개합니다.',
+      'remote-to-remote modules, shared routing, Tailwind CSS, error boundaries, TypeScript로 Vite monorepo를 구축하는 실습 가이드입니다.',
+      'fuzzy search와 speech synthesis를 지원하는 사용하기 쉬운 사전으로, 대학 졸업 프로젝트로 제작했습니다.',
+      'vanilla JavaScript로 Neural Networks와 Machine Learning을 탐구하는 브라우저 기반 self-driving car 시뮬레이션입니다.',
+      '외부 Machine Learning library 없이 JavaScript로 만든 브라우저 기반 Object Detection 실험입니다.',
+    ],
+    skillGroups: ['언어 및 Web', 'Frontend', 'Backend 및 CMS', '아키텍처 및 시스템', '데이터 및 스토리지', '품질 및 관측성', '플랫폼 및 배포', 'Applied ML 및 그래픽', '제품 및 도메인', '업무 방식'],
+  },
+  ja: {
+    experience: [
+      '高トラフィックの法人向け銀行プラットフォーム QLola を開発しています。20以上のチームが採用する shared microfrontend framework、component library、multilingual system を設計しました。',
+      '10以上のグローバル拠点で enterprise platform、MES、smart factory の導入を主導しました。99.99% availability と 52 ms 未満の latency を維持した3段階の cloud migration で reliability を担当しました。',
+      '手動中心だった QA workflow に automated UI と API testing、reusable end-to-end test suites、performance testing、CI/CD execution を導入しました。',
+      'full-stack のクライアントサイト、地域 inventory dashboard、10,000件以上の商品データを移行・整理する Python automation を開発しました。',
+    ],
+    projectTypes: ['技術記事 · Part 1', '技術記事 · Part 2', '学術プロジェクト', 'Machine Learning 実験', 'Computer Vision 実験'],
+    projects: [
+      'microfrontends が適する場面、host と remote applications の仕組み、Module Federation 2.0 が React と Vite システムにもたらす機能を紹介します。',
+      'remote-to-remote modules、shared routing、Tailwind CSS、error boundaries、TypeScript を使って Vite monorepo を構築する実践ガイドです。',
+      'fuzzy search と speech synthesis に対応した使いやすい辞書で、大学の卒業制作として開発しました。',
+      'vanilla JavaScript で Neural Networks と Machine Learning を学ぶブラウザベースの self-driving car シミュレーションです。',
+      '外部の Machine Learning library を使わず、JavaScript で構築したブラウザベースの Object Detection 実験です。',
+    ],
+    skillGroups: ['言語と Web', 'Frontend', 'Backend と CMS', 'アーキテクチャとシステム', 'データとストレージ', '品質と可観測性', 'プラットフォームとデリバリー', 'Applied ML とグラフィックス', '製品とドメイン', '働き方'],
+  },
+  'ar-SA': {
+    experience: [
+      'أطوّر QLola، وهي منصة corporate banking ذات حركة استخدام عالية. صممت shared microfrontend framework وcomponent library وmultilingual system تعتمدها أكثر من 20 فريقًا.',
+      'قدت تنفيذ enterprise platform وMES وsmart factory في أكثر من 10 مواقع عالمية. توليت reliability لعملية cloud migration من ثلاث مراحل حافظت على availability بنسبة 99.99% وlatency أقل من 52 ms.',
+      'أدخلت automated UI وAPI testing وreusable end-to-end test suites وperformance testing وتنفيذ CI/CD إلى QA workflow كان يدويًا في السابق.',
+      'طورت مواقع full-stack للعملاء وinventory dashboard إقليمية وPython automation لنقل وتنظيف أكثر من 10,000 سجل منتج.',
+    ],
+    projectTypes: ['كتابة تقنية · الجزء 1', 'كتابة تقنية · الجزء 2', 'مشروع أكاديمي', 'تجربة Machine Learning', 'تجربة Computer Vision'],
+    projects: [
+      'مقدمة حول متى تكون microfrontends مناسبة، وكيف تعمل host وremote applications، وما الذي تضيفه Module Federation 2.0 إلى أنظمة React وVite.',
+      'دليل عملي لبناء Vite monorepo باستخدام remote-to-remote modules وshared routing وTailwind CSS وerror boundaries وTypeScript.',
+      'قاموس سهل الاستخدام يدعم fuzzy search وspeech synthesis، أنشأته كمشروع تخرج جامعي.',
+      'محاكاة self-driving car داخل المتصفح تستكشف Neural Networks وMachine Learning باستخدام vanilla JavaScript.',
+      'تجربة Object Detection داخل المتصفح مبنية باستخدام JavaScript من دون Machine Learning library خارجية.',
+    ],
+    skillGroups: ['اللغات والويب', 'Frontend', 'Backend وCMS', 'المعمارية والأنظمة', 'البيانات والتخزين', 'الجودة وقابلية المراقبة', 'المنصات والتسليم', 'Applied ML والرسومات', 'المنتج والمجال', 'أساليب العمل'],
+  },
+}
+
 const experience = [
   {
     period: 'May 2026 — Present',
@@ -204,6 +292,8 @@ function App() {
   const [headerVisible, setHeaderVisible] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
   const copy = translations[language]
+  const localizedContent = contentTranslations[language]
+  const contentDirection = language === 'ar-SA' ? 'rtl' : 'ltr'
 
   useEffect(() => {
     document.documentElement.lang = language
@@ -290,10 +380,11 @@ function App() {
               </ol>
             </nav>
             <div className="header-actions">
+              <a className="header-email" href={`mailto:${profile.email}`}>{copy.email} ↗</a>
+              <span className="header-divider" aria-hidden="true" />
               <select className="language-select" value={language} onChange={({ target }) => setLanguage(target.value)} aria-label={copy.language}>
                 {languages.map(([value, label]) => <option value={value} key={value}>{label}</option>)}
               </select>
-              <a className="header-email" href={`mailto:${profile.email}`}>{copy.email} ↗</a>
               <button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={copy.theme(theme === 'dark' ? 'light' : 'dark')}>
                 {theme === 'dark' ? (
                   <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5" /><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" /></svg>
@@ -356,13 +447,13 @@ function App() {
             <header className="section-heading"><p>02</p><h2 id="experience-heading"><SectionTitle words={copy.sections.experience} /></h2></header>
             <div className="section-content">
               <div className="experience-list" dir="ltr">
-                {experience.map((item) => (
+                {experience.map((item, index) => (
                   <article className="experience-item" key={`${item.company}-${item.period}`}>
                     <div className="experience-title">
                       <p className="period">{item.period}</p>
                       <div><h3>{item.role}</h3><p className="company">{item.company}</p></div>
                     </div>
-                    <p className="summary">{item.summary}</p>
+                    <p className="summary" dir={contentDirection}>{localizedContent?.experience[index] ?? item.summary}</p>
                     <TagList items={item.tags} label={copy.technologies} />
                   </article>
                 ))}
@@ -378,9 +469,9 @@ function App() {
                 <article className="project-row" key={project.title}>
                   <p className="project-number">0{index + 1}</p>
                   <div className="project-copy">
-                    <p className="project-type">{project.type}</p>
+                    <p className="project-type" dir={contentDirection}>{localizedContent?.projectTypes[index] ?? project.type}</p>
                     <h3>{project.href ? <a href={project.href} target="_blank" rel="noreferrer">{project.title} <span>↗</span></a> : project.title}</h3>
-                    <p className="summary">{project.description}</p>
+                    <p className="summary" dir={contentDirection}>{localizedContent?.projects[index] ?? project.description}</p>
                     <TagList items={project.tags} label={copy.technologies} />
                   </div>
                 </article>
@@ -391,9 +482,9 @@ function App() {
           <section className="section-block" id="skills" aria-labelledby="skills-heading">
             <header className="section-heading"><p>04</p><h2 id="skills-heading"><SectionTitle words={copy.sections.skills} /></h2></header>
             <div className="section-content skill-grid" dir="ltr">
-              {skills.map((skill) => (
+              {skills.map((skill, index) => (
                 <div className="skill-group" key={skill.group}>
-                  <h3>{skill.group}</h3>
+                  <h3 dir={contentDirection}>{localizedContent?.skillGroups[index] ?? skill.group}</h3>
                   <p>{skill.items.join(', ')}</p>
                 </div>
               ))}
