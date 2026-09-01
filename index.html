@@ -6,7 +6,10 @@
     <meta name="theme-color" content="#050505" />
     <script>
       const theme = localStorage.getItem('theme') || 'dark'
+      const language = localStorage.getItem('language') || 'en'
       document.documentElement.dataset.theme = theme
+      document.documentElement.lang = language
+      document.documentElement.dir = language === 'ar-SA' ? 'rtl' : 'ltr'
       document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#050505' : '#f3f1eb'
     </script>
     <meta name="description" content="Portfolio of Yohanes Pratama Naibaho, a software engineer building scalable systems across the stack." />
