@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { Fragment, useRef, useState } from 'react'
 
 const profile = {
   role: 'Software Engineer',
@@ -162,7 +162,11 @@ function App() {
           <section className="section-block" id="about" aria-labelledby="about-heading">
             <header className="section-heading"><p>01</p><h2 id="about-heading"><span data-word="About">About</span></h2></header>
             <div className="section-content prose">
-              <p>I’m a software engineer who works across frontend, backend, testing, and infrastructure.</p>
+              <p className="about-intro">
+                {'I’m a software engineer who works across frontend, backend, testing, and infrastructure.'.split(' ').map((word, index, words) => (
+                  <Fragment key={`${word}-${index}`}><span data-word={word}>{word}</span>{index < words.length - 1 && ' '}</Fragment>
+                ))}
+              </p>
               <p>Today, I work on QLola at Bank Rakyat Indonesia, building shared frontend foundations for a secure corporate banking platform. Previously, I delivered enterprise systems, smart-factory platforms, and cloud reliability work with global teams at LG Group.</p>
               <p>I earned a Bachelor of Science in Computing from President University with a 70% Jababeka Scholarship.</p>
             </div>
