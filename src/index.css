@@ -215,6 +215,10 @@ nav a, .header-email { color: var(--secondary); font-size: .72rem; font-weight: 
   from { opacity: 0; transform: scale(.96) rotate(-4deg); }
   to { opacity: .9; transform: scale(1) rotate(0deg); }
 }
+@keyframes mobile-geometry-enter {
+  from { opacity: 0; }
+  to { opacity: .35; }
+}
 @supports (animation-timeline: scroll()) {
   .hero-orbits {
     animation: hero-orbits-scroll linear both;
@@ -302,7 +306,7 @@ h1 span:last-child { margin-inline-start: clamp(1rem, 8vw, 6rem); }
 .project-row { display: grid; grid-template-columns: 4rem 1fr; gap: 1.5rem; padding: 2.5rem 0; border-bottom: 1px solid var(--line); }
 .project-number, .project-type { color: var(--muted); font-size: .65rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
 .project-copy h3 { margin: .6rem 0 .8rem; color: var(--paper); font-size: clamp(1.45rem, 3vw, 2.15rem); font-weight: 520; letter-spacing: -.04em; }
-.project-copy .summary, .project-copy .tags { margin-left: 0; }
+.project-copy .summary, .project-copy .tags { margin-inline-start: 0; }
 
 .skill-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--paper); }
 .skill-group { padding-block: 2rem; padding-inline: 0 2rem; border-bottom: 1px solid var(--line); }
@@ -329,7 +333,7 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   .site-header { height: 4.5rem; }
   .header-inner { grid-template-columns: 1fr auto; column-gap: .75rem; }
   .header-inner, main, footer { width: calc(100% - 2rem); }
-  .header-inner > nav, .header-actions > .language-select, .header-email, .header-divider { display: none; }
+  .header-inner > nav, .header-email, .header-divider { display: none; }
   .header-actions { gap: .5rem; }
   .theme-toggle { width: 2.5rem; height: 2.5rem; }
   .menu-toggle { position: relative; display: grid; transition: color 160ms ease, border-color 160ms ease, transform 120ms var(--ease-out); }
@@ -352,7 +356,6 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   @starting-style { .mobile-menu[open] { opacity: 0; transform: translateY(-8px); } }
   .mobile-menu::backdrop { background: rgba(0, 0, 0, .45); }
   .mobile-menu-bar { flex: 0 0 4.5rem; width: calc(100% - 2rem); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
-  .mobile-menu-bar-actions { display: flex; align-items: center; gap: .5rem; }
   .menu-close { position: relative; display: grid; transition: color 160ms ease, border-color 160ms ease, transform 120ms var(--ease-out); }
   .mobile-navigation { width: calc(100% - 2rem); margin-inline: auto; display: block; }
   .mobile-navigation ol { display: block; margin: 0; padding: 2rem 0 0; }
@@ -361,7 +364,27 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   .mobile-navigation a > span { color: var(--accent); font-size: .65rem; font-weight: 700; letter-spacing: .05em; }
   .mobile-menu-footer { width: calc(100% - 2rem); margin: auto auto 0; padding: 1.5rem 0 2rem; display: flex; justify-content: flex-end; color: var(--secondary); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
   .hero { min-height: auto; padding: 3rem 0 2.5rem; scroll-margin-top: 4.5rem; }
-  .hero-atmosphere { display: none; }
+  .hero-atmosphere {
+    display: block;
+    inset: 2rem -1rem 38% 24%;
+    mask-image: linear-gradient(135deg, transparent 5%, #000 42%, #000 82%, transparent);
+  }
+  .hero-orbits { animation: none; transform: none; }
+  .geometry-layer[data-geometry] {
+    opacity: .35;
+    transform: none;
+    animation: mobile-geometry-enter 400ms ease-out both;
+    background:
+      linear-gradient(135deg, transparent 49.75%, var(--hero-line) 50%, transparent 50.25%),
+      linear-gradient(68deg, transparent 59.8%, var(--hero-grid) 60%, transparent 60.2%),
+      radial-gradient(circle at 78% 30%, var(--hero-accent), transparent 42%);
+  }
+  .geometry-layer[data-geometry]::before {
+    inset: 18% -12% 20% 34%;
+    border-radius: 0;
+    transform: rotate(-18deg) skewX(-10deg);
+  }
+  .geometry-layer[data-geometry]::after { display: none; }
   .hero-kicker { align-items: flex-start; flex-direction: column; gap: .4rem; }
   h1 { margin: 3rem 0; font-size: clamp(3.7rem, 18vw, 6rem); line-height: .86; }
   h1 span:last-child { margin-inline-start: 0; }

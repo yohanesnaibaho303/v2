@@ -181,7 +181,7 @@ const contentTranslations = {
 const experience = [
   {
     period: 'May 2026 — Present',
-    role: 'Frontend Engineer · via Entrust Digital',
+    role: 'Frontend Engineer',
     company: 'Bank Rakyat Indonesia',
     summary: 'Building QLola, a high-traffic corporate banking platform. Architected a shared microfrontend framework, component library, and multilingual system adopted across 20+ teams.',
     tags: ['Next.js', 'TypeScript', 'Module Federation', 'Storybook'],
@@ -290,7 +290,7 @@ function SectionTitle({ words }) {
 }
 
 function TagList({ items, label }) {
-  return <ul className="tags" aria-label={label}>{items.map((item) => <li key={item}>{item}</li>)}</ul>
+  return <ul className="tags" dir="ltr" aria-label={label}>{items.map((item) => <li key={item}>{item}</li>)}</ul>
 }
 
 function App() {
@@ -330,14 +330,16 @@ function App() {
   }, [geometry])
 
   useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 761px)')
     const animateOnReturn = () => {
-      if (document.visibilityState === 'visible') setGeometry((current) => (current + 1) % geometryCount)
+      if (desktop.matches && document.visibilityState === 'visible') setGeometry((current) => (current + 1) % geometryCount)
     }
     document.addEventListener('visibilitychange', animateOnReturn)
     return () => document.removeEventListener('visibilitychange', animateOnReturn)
   }, [])
 
   useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 761px)')
     let previousY = window.scrollY
     const hero = atmosphere.current?.parentElement
     let wasBelowHero = hero ? previousY > hero.offsetTop + hero.offsetHeight * .75 : false
@@ -347,8 +349,8 @@ function App() {
       const distance = currentY - previousY
       const geometryThreshold = hero ? hero.offsetTop + hero.offsetHeight * .75 : Infinity
 
-      if (currentY > geometryThreshold) wasBelowHero = true
-      else if (wasBelowHero && distance < 0) {
+      if (desktop.matches && currentY > geometryThreshold) wasBelowHero = true
+      else if (desktop.matches && wasBelowHero && distance < 0) {
         setGeometry((current) => (current + 1) % geometryCount)
         wasBelowHero = false
       }
@@ -434,12 +436,7 @@ function App() {
         <dialog className="mobile-menu" id="mobile-menu" ref={mobileMenu} onClose={handleMenuClose} aria-label={copy.navigation}>
           <div className="mobile-menu-bar">
             <a className="wordmark" href="#top" aria-label={copy.home} onClick={closeMenu}>YPN<span>®</span></a>
-            <div className="mobile-menu-bar-actions">
-              <select className="language-select" value={language} onChange={({ target }) => setLanguage(target.value)} aria-label={copy.language}>
-                {languages.map(([value, label]) => <option value={value} key={value}>{label}</option>)}
-              </select>
-              <button className="menu-close" type="button" onClick={closeMenu} aria-label={copy.closeMenu} autoFocus><span /><span /></button>
-            </div>
+            <button className="menu-close" type="button" onClick={closeMenu} aria-label={copy.closeMenu} autoFocus><span /><span /></button>
           </div>
           <nav className="mobile-navigation" aria-label={copy.navigation}>
             <ol>
@@ -483,12 +480,12 @@ function App() {
           <section className="section-block" id="experience" aria-labelledby="experience-heading">
             <header className="section-heading"><p>02</p><h2 id="experience-heading"><SectionTitle words={copy.sections.experience} /></h2></header>
             <div className="section-content">
-              <div className="experience-list" dir="ltr">
+              <div className="experience-list">
                 {experience.map((item, index) => (
                   <article className="experience-item" key={`${item.company}-${item.period}`}>
                     <div className="experience-title">
-                      <p className="period">{item.period}</p>
-                      <div><h3>{item.role}</h3><p className="company">{item.company}</p></div>
+                      <p className="period" dir="ltr">{item.period}</p>
+                      <div dir="ltr"><h3>{item.role}</h3><p className="company">{item.company}</p></div>
                     </div>
                     <p className="summary" dir={contentDirection}>{localizedContent?.experience[index] ?? item.summary}</p>
                     <TagList items={item.tags} label={copy.technologies} />
@@ -501,13 +498,13 @@ function App() {
 
           <section className="section-block" id="work" aria-labelledby="work-heading">
             <header className="section-heading"><p>03</p><h2 id="work-heading"><SectionTitle words={copy.sections.work} /></h2></header>
-            <div className="section-content project-list" dir="ltr">
+            <div className="section-content project-list">
               {projects.map((project, index) => (
                 <article className="project-row" key={project.title}>
-                  <p className="project-number">0{index + 1}</p>
+                  <p className="project-number" dir="ltr">0{index + 1}</p>
                   <div className="project-copy">
                     <p className="project-type" dir={contentDirection}>{localizedContent?.projectTypes[index] ?? project.type}</p>
-                    <h3>{project.href ? <a href={project.href} target="_blank" rel="noreferrer">{project.title} <span>↗</span></a> : project.title}</h3>
+                    <h3 dir="ltr">{project.href ? <a href={project.href} target="_blank" rel="noreferrer">{project.title} <span>↗</span></a> : project.title}</h3>
                     <p className="summary" dir={contentDirection}>{localizedContent?.projects[index] ?? project.description}</p>
                     <TagList items={project.tags} label={copy.technologies} />
                   </div>
@@ -518,11 +515,11 @@ function App() {
 
           <section className="section-block" id="skills" aria-labelledby="skills-heading">
             <header className="section-heading"><p>04</p><h2 id="skills-heading"><SectionTitle words={copy.sections.skills} /></h2></header>
-            <div className="section-content skill-grid" dir="ltr">
+            <div className="section-content skill-grid">
               {skills.map((skill, index) => (
                 <div className="skill-group" key={skill.group}>
                   <h3 dir={contentDirection}>{localizedContent?.skillGroups[index] ?? skill.group}</h3>
-                  <p>{skill.items.join(', ')}</p>
+                  <p dir="ltr">{skill.items.join(', ')}</p>
                 </div>
               ))}
             </div>
