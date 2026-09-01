@@ -297,6 +297,7 @@ function App() {
   const glow = useRef(null)
   const atmosphere = useRef(null)
   const mobileMenu = useRef(null)
+  const closeTimer = useRef(null)
   const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || 'dark')
   const [language, setLanguage] = useState(() => translations[localStorage.getItem('language')] ? localStorage.getItem('language') : 'en')
   const [headerVisible, setHeaderVisible] = useState(true)
@@ -320,6 +321,24 @@ function App() {
 
     desktop.addEventListener('change', closeOnDesktop)
     return () => desktop.removeEventListener('change', closeOnDesktop)
+  }, [])
+
+  useEffect(() => {
+    const sections = [...document.querySelectorAll('.section-content')]
+    if (!('IntersectionObserver' in window)) {
+      sections.forEach((section) => section.setAttribute('data-visible', ''))
+      return
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.setAttribute('data-visible', '')
+          observer.unobserve(entry.target)
+        }
+      })
+    }, { threshold: 0.12 })
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
   }, [])
 
   useEffect(() => {
@@ -377,13 +396,27 @@ function App() {
   const openMenu = () => {
     setHeaderVisible(true)
     setMenuOpen(true)
+    mobileMenu.current.removeAttribute('data-closing')
     mobileMenu.current.showModal()
     mobileMenu.current.querySelector('.menu-close').focus()
   }
 
-  const closeMenu = () => mobileMenu.current?.close()
+  const closeMenu = () => {
+    const menu = mobileMenu.current
+    if (!menu?.open || menu.hasAttribute('data-closing')) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      menu.close()
+      return
+    }
+    menu.setAttribute('data-closing', '')
+    closeTimer.current = window.setTimeout(() => menu.close(), 250)
+  }
 
-  const handleMenuClose = () => setMenuOpen(false)
+  const handleMenuClose = () => {
+    window.clearTimeout(closeTimer.current)
+    mobileMenu.current?.removeAttribute('data-closing')
+    setMenuOpen(false)
+  }
 
   return (
     <>
@@ -413,11 +446,13 @@ function App() {
                 {languages.map(([value, label]) => <option value={value} key={value}>{label}</option>)}
               </select>
               <button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={copy.theme(theme === 'dark' ? 'light' : 'dark')}>
+                <span className="theme-icon" data-theme={theme}>
                 {theme === 'dark' ? (
                   <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5" /><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" /></svg>
                 ) : (
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z" /></svg>
                 )}
+                </span>
               </button>
               <button className="menu-toggle" type="button" onClick={openMenu} aria-label={copy.menu} aria-controls="mobile-menu" aria-expanded={menuOpen}>
                 <span /><span />
@@ -426,7 +461,7 @@ function App() {
           </div>
         </header>
 
-        <dialog className="mobile-menu" id="mobile-menu" ref={mobileMenu} onClose={handleMenuClose} aria-label={copy.navigation}>
+        <dialog className="mobile-menu" id="mobile-menu" ref={mobileMenu} onClose={handleMenuClose} onCancel={(event) => { event.preventDefault(); closeMenu() }} aria-label={copy.navigation}>
           <div className="mobile-menu-bar">
             <a className="wordmark" href="#top" aria-label={copy.home} onClick={closeMenu}>YPN<span>®</span></a>
             <button className="menu-close" type="button" onClick={closeMenu} aria-label={copy.closeMenu} autoFocus><span /><span /></button>
@@ -467,7 +502,7 @@ function App() {
 
           <section className="section-block" id="about" aria-labelledby="about-heading">
             <header className="section-heading"><p>01</p><h2 id="about-heading"><SectionTitle words={copy.sections.about} /></h2></header>
-            <div className="section-content prose">
+            <div className="section-content prose" data-reveal>
               <p className="about-intro">
                 <InkText language={language}>{copy.aboutIntro}</InkText>
               </p>
@@ -478,7 +513,7 @@ function App() {
 
           <section className="section-block" id="experience" aria-labelledby="experience-heading">
             <header className="section-heading"><p>02</p><h2 id="experience-heading"><SectionTitle words={copy.sections.experience} /></h2></header>
-            <div className="section-content">
+            <div className="section-content" data-reveal>
               <div className="experience-list">
                 {experience.map((item, index) => (
                   <article className="experience-item" key={`${item.company}-${item.period}`}>
@@ -497,7 +532,7 @@ function App() {
 
           <section className="section-block" id="work" aria-labelledby="work-heading">
             <header className="section-heading"><p>03</p><h2 id="work-heading"><SectionTitle words={copy.sections.work} /></h2></header>
-            <div className="section-content project-list">
+            <div className="section-content project-list" data-reveal>
               {projects.map((project, index) => (
                 <article className="project-row" key={project.title}>
                   <p className="project-number" dir="ltr">0{index + 1}</p>
@@ -514,7 +549,7 @@ function App() {
 
           <section className="section-block" id="skills" aria-labelledby="skills-heading">
             <header className="section-heading"><p>04</p><h2 id="skills-heading"><SectionTitle words={copy.sections.skills} /></h2></header>
-            <div className="section-content skill-grid">
+            <div className="section-content skill-grid" data-reveal>
               {skills.map((skill, index) => (
                 <div className="skill-group" key={skill.group}>
                   <h3 dir={contentDirection}>{localizedContent?.skillGroups[index] ?? skill.group}</h3>
