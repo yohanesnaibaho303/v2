@@ -253,6 +253,21 @@ function App() {
     setTheme(nextTheme)
   }
 
+  const openMenu = () => {
+    setHeaderVisible(true)
+    setMenuOpen(true)
+    document.body.style.overflow = 'hidden'
+    mobileMenu.current.showModal()
+    mobileMenu.current.querySelector('.menu-close').focus()
+  }
+
+  const closeMenu = () => mobileMenu.current?.close()
+
+  const handleMenuClose = () => {
+    setMenuOpen(false)
+    document.body.style.overflow = ''
+  }
+
   return (
     <>
       <a className="skip-link" href="#content">{copy.skip}</a>
@@ -285,6 +300,9 @@ function App() {
                 ) : (
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z" /></svg>
                 )}
+              </button>
+              <button className="menu-toggle" type="button" onClick={openMenu} aria-label={copy.menu} aria-controls="mobile-menu" aria-expanded={menuOpen}>
+                <span /><span />
               </button>
             </div>
           </div>
