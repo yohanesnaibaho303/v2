@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 
 const profile = {
   role: 'Software Engineer',
@@ -103,6 +103,28 @@ function TagList({ items }) {
 function App() {
   const glow = useRef(null)
   const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || 'dark')
+  const [headerVisible, setHeaderVisible] = useState(true)
+
+  useEffect(() => {
+    let previousY = window.scrollY
+
+    const handleScroll = () => {
+      const currentY = window.scrollY
+      const distance = currentY - previousY
+
+      if (currentY <= 16) {
+        setHeaderVisible(true)
+        previousY = currentY
+      }
+      else if (Math.abs(distance) >= 8) {
+        setHeaderVisible(distance < 0)
+        previousY = currentY
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const toggleTheme = () => {
     const nextTheme = theme === 'dark' ? 'light' : 'dark'
@@ -125,7 +147,7 @@ function App() {
       >
         <div ref={glow} className="cursor-glow" aria-hidden="true" />
 
-        <header className="site-header">
+        <header className="site-header" data-hidden={headerVisible ? undefined : ''}>
           <div className="header-inner">
             <a className="wordmark" href="#top" aria-label="Home">YPN<span>®</span></a>
             <nav aria-label="In-page navigation">
