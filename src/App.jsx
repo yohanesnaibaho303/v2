@@ -154,13 +154,13 @@ function App() {
               <p className="intro">{profile.intro}</p>
               <dl className="quick-facts">
                 <div><dt>Currently</dt><dd>Frontend Engineer at Bank Rakyat Indonesia</dd></div>
-                <div><dt>Working across</dt><dd>Product UI, platforms, quality, and reliability</dd></div>
+                <div><dt>Working across</dt><dd>Smart Factory, Banking, Telecommunications, Data Center, Assurance, AI, Cloud and many more</dd></div>
               </dl>
             </div>
           </section>
 
           <section className="section-block" id="about" aria-labelledby="about-heading">
-            <header className="section-heading"><p>01</p><h2 id="about-heading">About</h2></header>
+            <header className="section-heading"><p>01</p><h2 id="about-heading"><span data-word="About">About</span></h2></header>
             <div className="section-content prose">
               <p>I’m a software engineer who works across frontend, backend, testing, and infrastructure.</p>
               <p>Today, I work on QLola at Bank Rakyat Indonesia, building shared frontend foundations for a secure corporate banking platform. Previously, I delivered enterprise systems, smart-factory platforms, and cloud reliability work with global teams at LG Group.</p>
@@ -169,7 +169,7 @@ function App() {
           </section>
 
           <section className="section-block" id="experience" aria-labelledby="experience-heading">
-            <header className="section-heading"><p>02</p><h2 id="experience-heading">Experience</h2></header>
+            <header className="section-heading"><p>02</p><h2 id="experience-heading"><span data-word="Experience">Experience</span></h2></header>
             <div className="section-content">
               <div className="experience-list">
                 {experience.map((item) => (
@@ -188,7 +188,7 @@ function App() {
           </section>
 
           <section className="section-block" id="work" aria-labelledby="work-heading">
-            <header className="section-heading"><p>03</p><h2 id="work-heading">Selected work</h2></header>
+            <header className="section-heading"><p>03</p><h2 id="work-heading"><span data-word="Selected">Selected</span>{' '}<span data-word="work">work</span></h2></header>
             <div className="section-content project-list">
               {projects.map((project, index) => (
                 <article className="project-row" key={project.title}>
@@ -205,7 +205,7 @@ function App() {
           </section>
 
           <section className="section-block" id="skills" aria-labelledby="skills-heading">
-            <header className="section-heading"><p>04</p><h2 id="skills-heading">Technical toolkit</h2></header>
+            <header className="section-heading"><p>04</p><h2 id="skills-heading"><span data-word="Technical">Technical</span>{' '}<span data-word="toolkit">toolkit</span></h2></header>
             <div className="section-content skill-grid">
               {skills.map((skill) => (
                 <div className="skill-group" key={skill.group}>

@@ -131,6 +131,23 @@ h1 span:last-child { margin-left: clamp(1rem, 8vw, 6rem); }
 .section-heading { position: sticky; top: 7rem; align-self: start; }
 .section-heading p { margin-bottom: 1rem; color: var(--accent); font-size: .7rem; font-weight: 700; }
 .section-heading h2 { margin: 0; color: var(--paper); font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 550; letter-spacing: -.04em; }
+@supports (animation-timeline: view()) {
+  .section-heading { view-timeline: --section-heading block; }
+  .section-heading h2 [data-word] { position: relative; display: inline-block; color: var(--muted); }
+  .section-heading h2 [data-word]::after {
+    content: attr(data-word);
+    position: absolute;
+    inset: 0;
+    color: var(--paper);
+    clip-path: inset(0 100% 0 0);
+    animation: heading-ink linear both;
+    animation-timeline: --section-heading;
+    animation-range: entry 0% cover 30%;
+  }
+  .section-heading h2 [data-word]:first-child:not(:only-child)::after { animation-range: entry 0% cover 15%; }
+  .section-heading h2 [data-word]:last-child:not(:only-child)::after { animation-range: cover 15% cover 30%; }
+  @keyframes heading-ink { to { clip-path: inset(0); } }
+}
 .section-content { min-width: 0; }
 .prose { max-width: 48rem; }
 .prose p { color: var(--muted); font-size: 1rem; line-height: 1.8; }
@@ -192,7 +209,7 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   .hero-footer { gap: 2rem; }
   .quick-facts { gap: 1rem; }
   .section-block { display: block; padding: 4.5rem 0; scroll-margin-top: 4.5rem; }
-  .section-heading { z-index: 10; top: 5.5rem; margin-bottom: 2.5rem; background: var(--background); }
+  .section-heading { position: static; margin-bottom: 2.5rem; }
   .experience-item { padding: 1.75rem 0; }
   .experience-title { grid-template-columns: 1fr; gap: .5rem; }
   .summary, .tags { margin-left: 0; }
@@ -219,6 +236,8 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   .hero-kicker, .hero h1, .hero-footer { transform: none; transition: opacity 200ms ease; transition-delay: 0ms; }
   .wordmark, .header-email, .theme-toggle, .text-link, .footer-email, .socials a, .project-copy h3 a, footer > a:last-child { transition: color 160ms ease, border-color 160ms ease; }
   .wordmark:active, .header-email:active, .text-link:active, .footer-email:active, .socials a:active, .project-copy h3 a:active, footer > a:last-child:active { transform: none; }
+  .section-heading h2 [data-word] { color: var(--paper); }
+  .section-heading h2 [data-word]::after { display: none; }
   @starting-style {
     .hero-kicker, .hero h1, .hero-footer { opacity: 0; transform: none; }
   }
