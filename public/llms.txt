@@ -1,0 +1,26 @@
+# Yohanes Pratama Naibaho
+
+> Yohanes Pratama Naibaho, also known as Yohanes Naibaho, is a software engineer in Jakarta. His main focus is frontend architecture, with experience in full-stack systems, test automation, and cloud reliability.
+
+He builds software for banking and manufacturing teams. His current work includes a shared microfrontend framework, component library, and multilingual system used by more than 20 teams.
+
+## Experience
+
+- Frontend Engineer working on QLola at Bank Rakyat Indonesia.
+- Former Associate Software Engineer at LG Group, where he led enterprise platform work across more than 10 global sites.
+- Maintained 99.99% availability, latency below 52 ms, and an error rate below 0.1% during a three-wave cloud migration.
+- Previous roles include QA Automation Engineer at BPJS Kesehatan and Software Developer at Knight Connections.
+
+## Public work
+
+- [Micro Frontend Architecture, Part 1](https://medium.com/@yohanespratama303/micro-frontend-dengan-module-federation-2-0-part-1-konsep-arsitektur-57ca1bb83367)
+- [Micro Frontend Architecture, Part 2](https://medium.com/@yohanespratama303/microfrontend-architecture-in-react-with-vite-module-federation-part-2-id-e482e9c3ae47)
+- [GitHub](https://github.com/yohanesnaibaho303)
+- [Medium](https://medium.com/@yohanespratama303)
+- [npm](https://npmjs.com/~joethegreatest)
+
+## Profile
+
+- [LinkedIn](https://linkedin.com/in/yohanesnaibaho)
+- [Résumé](/Yohanes-Pratama-Naibaho-resume.pdf)
+- Email: yohanespratama303@gmail.com
