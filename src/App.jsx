@@ -319,10 +319,7 @@ function App() {
     }
 
     desktop.addEventListener('change', closeOnDesktop)
-    return () => {
-      desktop.removeEventListener('change', closeOnDesktop)
-      document.body.style.overflow = ''
-    }
+    return () => desktop.removeEventListener('change', closeOnDesktop)
   }, [])
 
   useEffect(() => {
@@ -380,17 +377,13 @@ function App() {
   const openMenu = () => {
     setHeaderVisible(true)
     setMenuOpen(true)
-    document.body.style.overflow = 'hidden'
     mobileMenu.current.showModal()
     mobileMenu.current.querySelector('.menu-close').focus()
   }
 
   const closeMenu = () => mobileMenu.current?.close()
 
-  const handleMenuClose = () => {
-    setMenuOpen(false)
-    document.body.style.overflow = ''
-  }
+  const handleMenuClose = () => setMenuOpen(false)
 
   return (
     <>

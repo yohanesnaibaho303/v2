@@ -52,6 +52,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; min-width: 320px; background: var(--background); }
+body:has(.mobile-menu[open]) { overflow: hidden; }
 a { color: inherit; text-decoration: none; }
 ::selection { color: var(--background); background: var(--paper); }
 
@@ -213,10 +214,7 @@ nav a, .header-email { color: var(--secondary); font-size: .72rem; font-weight: 
   from { opacity: 0; transform: scale(.96) rotate(-4deg); }
   to { opacity: .9; transform: scale(1) rotate(0deg); }
 }
-@keyframes mobile-geometry-enter {
-  from { opacity: 0; }
-  to { opacity: .35; }
-}
+@keyframes geometry-fade { from { opacity: 0; } }
 @supports (animation-timeline: scroll()) {
   .hero-orbits {
     animation: hero-orbits-scroll linear both;
@@ -228,7 +226,7 @@ nav a, .header-email { color: var(--secondary); font-size: .72rem; font-weight: 
   }
 }
 .hero-kicker { display: flex; justify-content: space-between; color: var(--muted); font-size: .7rem; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
-h1, h2, h3, p { margin-top: 0; }
+h1, h2, h3, p { margin: 0; }
 h1 { margin: 4rem 0; color: var(--paper); font-size: clamp(4.2rem, 10.5vw, 9rem); font-weight: 600; line-height: .83; letter-spacing: -.075em; }
 h1 span { display: block; }
 h1 span:last-child { margin-inline-start: clamp(1rem, 8vw, 6rem); }
@@ -301,7 +299,7 @@ h1 span:last-child { margin-inline-start: clamp(1rem, 8vw, 6rem); }
 .tags { display: flex; flex-wrap: wrap; margin: 1rem 0 0; margin-inline-start: 11.5rem; padding: 0; color: var(--tag); list-style: none; font-size: .68rem; font-weight: 600; }
 .tags li:not(:last-child)::after { content: "/"; margin: 0 .55rem; color: var(--slash); }
 .text-link { display: inline-block; margin-top: 2rem; padding-bottom: .25rem; border-bottom: 1px solid var(--paper); font-size: .8rem; font-weight: 650; }
-.text-link span, .project-copy h3 span { display: inline-block; transition: transform 160ms var(--ease-out); }
+.hero-actions span, .text-link span, .project-copy h3 span { display: inline-block; transition: transform 160ms var(--ease-out); }
 
 .project-list { border-top: 1px solid var(--paper); }
 .project-row { display: grid; grid-template-columns: 4rem 1fr; gap: 1.5rem; padding: 2.5rem 0; border-bottom: 1px solid var(--line); }
@@ -323,10 +321,8 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
 .wordmark:active, .header-email:active, .text-link:active, .footer-email:active, .socials a:active, .project-copy h3 a:active, footer > a:last-child:active { transform: scale(.97); }
 
 @media (hover: hover) and (pointer: fine) {
-  nav a:hover, .header-email:hover, footer a:hover { color: var(--accent); }
-  .hero-actions a:hover { color: var(--accent); }
-  .hero-actions a:hover span { transform: translate(.15rem, -.15rem); }
-  .text-link:hover span, .project-copy h3 a:hover span { transform: translate(.18rem, -.18rem); }
+  nav a:hover, .header-email:hover, .hero-actions a:hover, footer a:hover { color: var(--accent); }
+  .hero-actions a:hover span, .text-link:hover span, .project-copy h3 a:hover span { transform: translate(.18rem, -.18rem); }
   .project-copy h3 a:hover { color: var(--accent); }
 }
 
@@ -376,7 +372,7 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   .geometry-layer[data-geometry] {
     opacity: .35;
     transform: none;
-    animation: mobile-geometry-enter 400ms ease-out both;
+    animation: geometry-fade 400ms ease-out both;
     background:
       linear-gradient(135deg, transparent 49.75%, var(--hero-line) 50%, transparent 50.25%),
       linear-gradient(68deg, transparent 59.8%, var(--hero-grid) 60%, transparent 60.2%),
@@ -417,8 +413,8 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   .site-header { transition: none; }
   .mobile-menu, .menu-toggle, .menu-close { transition: none; }
   .cursor-glow { display: none; }
-  .skip-link, .text-link span, .project-copy h3 span { transition: none; }
-  .text-link:hover span, .project-copy h3 a:hover span { transform: none; }
+  .skip-link, .hero-actions span, .text-link span, .project-copy h3 span { transition: none; }
+  .hero-actions a:hover span, .text-link:hover span, .project-copy h3 a:hover span { transform: none; }
   .hero-kicker, .hero h1, .hero-footer { transform: none; transition: opacity 200ms ease; transition-delay: 0ms; }
   .hero-orbits { animation: none; transform: none; }
   .geometry-layer { animation: geometry-fade 200ms ease both; transform: none; }
@@ -431,5 +427,4 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   @starting-style {
     .hero-kicker, .hero h1, .hero-footer { opacity: 0; transform: none; }
   }
-  @keyframes geometry-fade { from { opacity: 0; } to { opacity: .9; } }
 }
