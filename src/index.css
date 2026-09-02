@@ -305,7 +305,9 @@ h1 span:last-child { margin-inline-start: clamp(1rem, 8vw, 6rem); }
 .experience-item::after { inset-block-end: 0; }
 .experience-title { display: grid; grid-template-columns: 10rem 1fr; gap: 1.5rem; }
 .period { padding-top: .25rem; color: var(--muted); font-size: .68rem; font-weight: 650; text-transform: uppercase; letter-spacing: .06em; }
+@media (min-width: 761px) { [dir="rtl"] .period { padding-inline-start: 1rem; } }
 .experience-item h3 { margin-bottom: .3rem; color: var(--paper); font-size: 1.15rem; font-weight: 550; letter-spacing: -.025em; }
+.experience-copy h3 { display: flex; align-items: baseline; gap: .3rem; }
 .experience-arrow { display: inline-block; color: var(--muted); font-size: .8em; transition: color 160ms ease, transform 160ms var(--ease-out); }
 .experience-item:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; background: var(--glow); }
 @supports (animation-timeline: view()) {
@@ -315,6 +317,7 @@ h1 span:last-child { margin-inline-start: clamp(1rem, 8vw, 6rem); }
 .company { color: var(--muted); font-size: .78rem; }
 .summary { max-width: 43rem; margin: 1.25rem 0 0; margin-inline-start: 11.5rem; color: var(--muted); font-size: .86rem; line-height: 1.75; }
 .tags { display: flex; flex-wrap: wrap; margin: 1rem 0 0; margin-inline-start: 11.5rem; padding: 0; color: var(--tag); list-style: none; font-size: .68rem; font-weight: 600; }
+[dir="rtl"] .experience-item .tags { margin-right: 11.5rem; margin-left: 0; }
 .tags li:not(:last-child)::after { content: "/"; margin: 0 .55rem; color: var(--slash); }
 .text-link { display: inline-block; margin-top: 2rem; padding-bottom: .25rem; border-bottom: 1px solid var(--paper); font-size: .8rem; font-weight: 650; }
 .hero-actions span, .text-link span, .project-copy h3 span { display: inline-block; transition: transform 160ms var(--ease-out); }
@@ -450,6 +453,7 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   .experience-item::before { inset-block-start: 2.05rem; }
   .experience-title { grid-template-columns: 1fr; gap: .5rem; }
   .summary, .tags { margin-inline-start: 0; }
+  [dir="rtl"] .experience-item .tags { margin-right: 0; }
   .project-row { grid-template-columns: 2.5rem 1fr; padding: 2rem 0; }
   .project-list { --project-accent-inset: 3.25rem; --project-divider-inset: 4rem; }
   .skill-grid { grid-template-columns: 1fr; }

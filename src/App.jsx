@@ -525,7 +525,7 @@ function App() {
                   <a className="experience-item" href={item.href} target="_blank" rel="noreferrer" key={`${item.company}-${item.period}`}>
                     <div className="experience-title">
                       <p className="period" dir="ltr">{item.period}</p>
-                      <div dir="ltr"><h3>{item.role} <span className="experience-arrow" aria-hidden="true">↗</span></h3><p className="company">{item.company}</p></div>
+                      <div className="experience-copy" dir={contentDirection}><h3><bdi dir="ltr">{item.role}</bdi> <span className="experience-arrow" aria-hidden="true">↗</span></h3><p className="company"><bdi dir="ltr">{item.company}</bdi></p></div>
                     </div>
                     <p className="summary" dir={contentDirection}>{localizedContent?.experience[index] ?? item.summary}</p>
                     <TagList items={item.tags} label={copy.technologies} />
@@ -544,7 +544,7 @@ function App() {
                   <p className="project-number" dir="ltr">0{index + 1}</p>
                   <div className="project-copy">
                     <p className="project-type" dir={contentDirection}>{localizedContent?.projectTypes[index] ?? project.type}</p>
-                    <h3 dir="ltr">{project.title} <span>↗</span></h3>
+                    <h3 dir={contentDirection}><bdi dir="ltr">{project.title} <span>↗</span></bdi></h3>
                     <p className="summary" dir={contentDirection}>{localizedContent?.projects[index] ?? project.description}</p>
                     <TagList items={project.tags} label={copy.technologies} />
                   </div>
