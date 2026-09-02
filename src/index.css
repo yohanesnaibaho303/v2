@@ -178,16 +178,16 @@ nav a, .header-email { color: var(--secondary); font-size: .72rem; font-weight: 
 }
 .geometry-layer[data-geometry="1"] {
   background:
-    linear-gradient(28deg, transparent 49.85%, var(--hero-line) 50%, transparent 50.15%),
-    linear-gradient(-32deg, transparent 49.85%, var(--hero-line) 50%, transparent 50.15%),
-    repeating-linear-gradient(90deg, transparent 0 4.95rem, var(--hero-grid) 5rem),
-    repeating-linear-gradient(0deg, transparent 0 4.95rem, var(--hero-grid) 5rem);
+    radial-gradient(circle at 69% 50%, transparent 0 11.8%, var(--hero-line) 12% 12.15%, transparent 12.35%),
+    radial-gradient(circle at 69% 50%, transparent 0 25.8%, var(--hero-line) 26% 26.15%, transparent 26.35%),
+    radial-gradient(circle at 69% 50%, transparent 0 39.8%, var(--hero-line) 40% 40.15%, transparent 40.35%);
 }
 .geometry-layer[data-geometry="2"] {
   background:
-    conic-gradient(from 205deg at 68% 50%, transparent 0 21.8deg, var(--hero-line) 22deg 22.2deg, transparent 22.4deg 57.8deg, var(--hero-line) 58deg 58.2deg, transparent 58.4deg),
-    repeating-linear-gradient(135deg, transparent 0 3.95rem, var(--hero-grid) 4rem),
-    linear-gradient(90deg, transparent 49.85%, var(--hero-line) 50%, transparent 50.15%);
+    radial-gradient(circle at 38% 31%, transparent 0 13.8%, var(--hero-line) 14% 14.15%, transparent 14.35%),
+    radial-gradient(circle at 61% 52%, transparent 0 21.8%, var(--hero-line) 22% 22.15%, transparent 22.35%),
+    radial-gradient(circle at 82% 73%, transparent 0 16.8%, var(--hero-line) 17% 17.15%, transparent 17.35%),
+    radial-gradient(circle at 91% 18%, transparent 0 34.8%, var(--hero-grid) 35% 35.15%, transparent 35.35%);
 }
 .geometry-layer::before {
   content: "";
@@ -197,8 +197,8 @@ nav a, .header-email { color: var(--secondary); font-size: .72rem; font-weight: 
   border-radius: 50%;
   transform: rotate(-12deg);
 }
-.geometry-layer[data-geometry="1"]::before { inset: 22% 20% 18% 38%; border-radius: 0; transform: rotate(45deg) skew(-8deg, -8deg); }
-.geometry-layer[data-geometry="2"]::before { inset: 18% -4% 24% 28%; border-radius: 0; transform: rotate(-18deg) skewX(-12deg); }
+.geometry-layer[data-geometry="1"]::before { inset: 8% 8% 12% 34%; transform: rotate(58deg) scaleX(.48); }
+.geometry-layer[data-geometry="2"]::before { inset: 28% 28% 24% 18%; transform: rotate(-18deg); }
 .geometry-layer::after {
   content: "";
   position: absolute;
@@ -217,6 +217,7 @@ nav a, .header-email { color: var(--secondary); font-size: .72rem; font-weight: 
   to { opacity: .9; transform: scale(1) rotate(0deg); }
 }
 @keyframes geometry-fade { from { opacity: 0; } }
+@keyframes geometry-wheel { to { transform: rotate(1turn); } }
 @supports (animation-timeline: scroll()) {
   .hero-orbits {
     animation: hero-orbits-scroll linear both;
@@ -378,23 +379,30 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   .hero { min-height: auto; padding: 3rem 0 2.5rem; scroll-margin-top: 4.5rem; }
   .hero-atmosphere {
     display: block;
-    inset: 2rem -1rem 38% 24%;
-    mask-image: linear-gradient(135deg, transparent 5%, #000 42%, #000 82%, transparent);
+    inset: 1.5rem -1rem 38% 16%;
+    mask-image: linear-gradient(135deg, transparent 3%, #000 32%, #000 88%, transparent);
   }
   .hero-orbits { animation: none; transform: none; }
   .geometry-layer[data-geometry] {
+    inset: 0 -28% auto auto;
+    width: min(118vw, 34rem);
+    aspect-ratio: 1;
     opacity: .35;
-    transform: none;
-    animation: geometry-fade 400ms ease-out both;
+    border-radius: 50%;
+    transform-origin: 50% 50%;
+    animation: geometry-fade 400ms ease-out both, geometry-wheel 48s linear infinite;
     background:
-      linear-gradient(135deg, transparent 49.75%, var(--hero-line) 50%, transparent 50.25%),
-      linear-gradient(68deg, transparent 59.8%, var(--hero-grid) 60%, transparent 60.2%),
-      radial-gradient(circle at 78% 30%, var(--hero-accent), transparent 42%);
+      radial-gradient(circle at 50% 50%, transparent 0 48.8%, var(--hero-line) 49% 49.25%, transparent 49.45%),
+      radial-gradient(circle at 2% 4%, transparent 0 57.8%, var(--hero-line) 58% 58.25%, transparent 58.45%),
+      radial-gradient(circle at 96% 8%, transparent 0 61.8%, var(--hero-line) 62% 62.25%, transparent 62.45%),
+      radial-gradient(circle at 7% 96%, transparent 0 64.8%, var(--hero-line) 65% 65.25%, transparent 65.45%),
+      radial-gradient(circle at 94% 92%, transparent 0 54.8%, var(--hero-line) 55% 55.25%, transparent 55.45%),
+      conic-gradient(from 8deg, transparent 0 23.8%, var(--hero-grid) 24% 24.2%, transparent 24.4% 51.8%, var(--hero-grid) 52% 52.2%, transparent 52.4% 77.8%, var(--hero-grid) 78% 78.2%, transparent 78.4%);
   }
   .geometry-layer[data-geometry]::before {
-    inset: 18% -12% 20% 34%;
-    border-radius: 0;
-    transform: rotate(-18deg) skewX(-10deg);
+    inset: 17%;
+    border-radius: 44% 56% 48% 52%;
+    transform: rotate(18deg);
   }
   .geometry-layer[data-geometry]::after { display: none; }
   .hero-kicker { align-items: flex-start; flex-direction: column; gap: .4rem; }
