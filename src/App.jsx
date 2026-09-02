@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
+import { flushSync } from 'react-dom'
 
 const profile = {
   email: 'yohanespratama303@gmail.com',
@@ -396,6 +397,17 @@ function App() {
     setTheme(nextTheme)
   }
 
+  const changeLanguage = ({ target }) => {
+    const nextLanguage = target.value
+    const update = () => flushSync(() => {
+      document.documentElement.lang = nextLanguage
+      document.documentElement.dir = nextLanguage === 'ar-SA' ? 'rtl' : 'ltr'
+      setLanguage(nextLanguage)
+    })
+    if (document.startViewTransition) document.startViewTransition(update)
+    else update()
+  }
+
   const openMenu = () => {
     setHeaderVisible(true)
     setMenuOpen(true)
@@ -447,7 +459,7 @@ function App() {
             <div className="header-actions">
               <a className="header-email" href={`mailto:${profile.email}`}>{copy.email} ↗</a>
               <span className="header-divider" aria-hidden="true" />
-              <select className="language-select" value={language} onChange={({ target }) => setLanguage(target.value)} aria-label={copy.language}>
+              <select className="language-select" value={language} onChange={changeLanguage} aria-label={copy.language}>
                 {languages.map(([value, label]) => <option value={value} key={value}>{label}</option>)}
               </select>
               <button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={copy.theme(theme === 'dark' ? 'light' : 'dark')}>
