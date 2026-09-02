@@ -360,6 +360,7 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
 @media (hover: hover) and (pointer: fine) {
   nav a:hover, .header-email:hover, .hero-actions a:hover, footer a:hover { color: var(--accent); }
   .hero-actions a:hover span, .text-link:hover span, .project-row:hover h3 span { transform: translate(.18rem, -.18rem); }
+  .hero-actions a[href^="#"]:hover span { transform: translateY(.18rem); }
   .project-row:hover::before { transform: scaleY(1); }
   .project-row:hover .project-number, .project-row:hover h3 { color: var(--accent); }
   .project-row:hover .project-copy { transform: translateX(.25rem); }
