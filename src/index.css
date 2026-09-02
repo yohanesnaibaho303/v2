@@ -295,16 +295,23 @@ h1 span:last-child { margin-inline-start: clamp(1rem, 8vw, 6rem); }
 [dir="rtl"] .section-heading h2 [data-word]::after,
 [dir="rtl"] .about-intro [data-word]::after { clip-path: inset(0 0 0 100%); }
 
-.experience-list { position: relative; margin-inline: -1rem; }
+.experience-list { --timeline-x: 10.75rem; position: relative; margin-inline: -1rem; }
 .experience-list::before, .experience-item::after { position: absolute; inset-inline: 12.5rem 1rem; height: 1px; content: ""; background: var(--line); }
 .experience-list::before { inset-block-start: 0; inset-inline: 0; background: var(--paper); }
+.experience-timeline { position: absolute; z-index: 1; inset-block: 2.85rem; inset-inline-start: var(--timeline-x); width: 1px; overflow: hidden; background: var(--line); pointer-events: none; view-timeline: --experience-timeline block; }
+.experience-timeline::after { position: absolute; inset: 0; content: ""; background: var(--accent); transform-origin: top; }
 .experience-item { position: relative; display: block; padding: 2.2rem 1rem; border-radius: .35rem; transition: color 160ms ease, background-color 160ms ease; }
+.experience-item::before { position: absolute; z-index: 2; inset-block-start: 2.65rem; inset-inline-start: calc(var(--timeline-x) - .2rem); width: .45rem; aspect-ratio: 1; border: 1px solid var(--background); border-radius: 50%; content: ""; background: var(--accent); }
 .experience-item::after { inset-block-end: 0; }
 .experience-title { display: grid; grid-template-columns: 10rem 1fr; gap: 1.5rem; }
 .period { padding-top: .25rem; color: var(--muted); font-size: .68rem; font-weight: 650; text-transform: uppercase; letter-spacing: .06em; }
 .experience-item h3 { margin-bottom: .3rem; color: var(--paper); font-size: 1.15rem; font-weight: 550; letter-spacing: -.025em; }
 .experience-arrow { display: inline-block; color: var(--muted); font-size: .8em; transition: color 160ms ease, transform 160ms var(--ease-out); }
 .experience-item:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; background: var(--glow); }
+@supports (animation-timeline: view()) {
+  .experience-timeline::after { animation: timeline-ink linear both; animation-timeline: --experience-timeline; animation-range: entry 0% cover 80%; transform: scaleY(0); }
+  @keyframes timeline-ink { to { transform: scaleY(1); } }
+}
 .company { color: var(--muted); font-size: .78rem; }
 .summary { max-width: 43rem; margin: 1.25rem 0 0; margin-inline-start: 11.5rem; color: var(--muted); font-size: .86rem; line-height: 1.75; }
 .tags { display: flex; flex-wrap: wrap; margin: 1rem 0 0; margin-inline-start: 11.5rem; padding: 0; color: var(--tag); list-style: none; font-size: .68rem; font-weight: 600; }
@@ -435,8 +442,12 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   .section-block { display: block; padding: 4.5rem 0; scroll-margin-top: 4.5rem; }
   .section-heading { position: static; margin-bottom: 2.5rem; }
   .experience-list { margin-inline: -.75rem; }
-  .experience-item { padding: 1.75rem .75rem; }
-  .experience-list::before, .experience-item::after { inset-inline: .75rem; }
+  .experience-list { --timeline-x: .75rem; }
+  .experience-item { padding-block: 1.75rem; padding-inline: 2rem .75rem; }
+  .experience-list::before { inset-inline: 0; }
+  .experience-item::after { inset-inline: 2rem .75rem; }
+  .experience-timeline { inset-block: 2.25rem; }
+  .experience-item::before { inset-block-start: 2.05rem; }
   .experience-title { grid-template-columns: 1fr; gap: .5rem; }
   .summary, .tags { margin-inline-start: 0; }
   .project-row { grid-template-columns: 2.5rem 1fr; padding: 2rem 0; }
@@ -473,6 +484,7 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   .section-heading h2 [data-word]::after { display: none; }
   .about-intro [data-word] { color: var(--paper); }
   .about-intro [data-word]::after { display: none; }
+  .experience-timeline::after { animation: none; transform: scaleY(1); }
   @starting-style {
     .hero-kicker, .hero h1, .hero-footer { opacity: 0; transform: none; }
   }

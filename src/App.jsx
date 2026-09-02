@@ -520,6 +520,7 @@ function App() {
             <header className="section-heading"><p>02</p><h2 id="experience-heading"><SectionTitle words={copy.sections.experience} /></h2></header>
             <div className="section-content" data-reveal>
               <div className="experience-list">
+                <span className="experience-timeline" aria-hidden="true" />
                 {experience.map((item, index) => (
                   <a className="experience-item" href={item.href} target="_blank" rel="noreferrer" key={`${item.company}-${item.period}`}>
                     <div className="experience-title">
