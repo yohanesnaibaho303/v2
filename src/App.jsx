@@ -302,14 +302,21 @@ function App() {
   const glow = useRef(null)
   const atmosphere = useRef(null)
   const mobileMenu = useRef(null)
-  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || 'dark')
-  const [language, setLanguage] = useState(() => translations[localStorage.getItem('language')] ? localStorage.getItem('language') : 'en')
+  const [theme, setTheme] = useState('dark')
+  const [language, setLanguage] = useState('en')
   const [headerVisible, setHeaderVisible] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [geometry, setGeometry] = useState(getInitialGeometry)
+  const [geometry, setGeometry] = useState(0)
   const copy = translations[language]
   const localizedContent = contentTranslations[language]
   const contentDirection = language === 'ar-SA' ? 'rtl' : 'ltr'
+
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem('language')
+    setTheme(document.documentElement.dataset.theme || 'dark')
+    if (translations[storedLanguage]) setLanguage(storedLanguage)
+    setGeometry(getInitialGeometry())
+  }, [])
 
   useEffect(() => {
     document.documentElement.lang = language

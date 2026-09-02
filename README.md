@@ -1,6 +1,6 @@
-# Yohanes Pratama Naibaho — Portfolio
+# Yohanes Naibaho — Portfolio
 
-Personal portfolio of [Yohanes Pratama Naibaho](https://yohanesnaibaho.com/), showcasing his profile, work experience, selected projects, and technical skills.
+Personal portfolio of [Yohanes Naibaho](https://yohanesnaibaho.com/), showcasing his profile, work experience, selected projects, and technical skills.
 
 ## Features
 
@@ -9,6 +9,7 @@ Personal portfolio of [Yohanes Pratama Naibaho](https://yohanesnaibaho.com/), sh
 - Responsive layout for desktop and mobile devices
 - Accessible navigation and `prefers-reduced-motion` support
 - SEO metadata, sitemap, robots.txt, and structured data
+- Prerendered content for search engines and AI crawlers
 - Direct access to a PDF resume
 
 ## Tech stack
