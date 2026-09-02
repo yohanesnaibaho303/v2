@@ -459,8 +459,7 @@ footer { min-height: 11rem; display: grid; grid-template-columns: 1fr auto auto;
   .quick-facts { gap: 1rem; }
   .section-block { display: block; padding: 4.5rem 0; scroll-margin-top: 4.5rem; }
   .section-heading { position: static; margin-bottom: 2.5rem; }
-  .experience-list { margin-inline: -.75rem; }
-  .experience-list { --timeline-x: .75rem; }
+  .experience-list { --timeline-x: .75rem; margin-inline: -.75rem; }
   .experience-item { padding-block: 1.75rem; padding-inline: 2rem .75rem; }
   .experience-list::before { inset-inline: 0; }
   .experience-item::after { inset-inline: 2rem .75rem; }
