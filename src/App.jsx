@@ -26,7 +26,7 @@ const translations = {
     aboutIntro: 'My main focus is frontend architecture. I also work with backend systems, test automation, and cloud infrastructure.',
     aboutBody: 'At Bank Rakyat Indonesia, I build shared frontend foundations for QLola, a corporate banking platform used by more than 20 teams. Before that, I led enterprise system work at LG Group and handled reliability during a three-wave cloud migration.',
     education: 'I earned a Bachelor of Science in Computing from President University on a 70% Jababeka Scholarship.',
-    resume: 'View full résumé', theme: (next) => `Switch to ${next} mode`,
+    resume: 'View full résumé', github: 'View GitHub profile', theme: (next) => `Switch to ${next} mode`,
   },
   id: {
     skip: 'Lewati ke konten', home: 'Beranda', navigation: 'Navigasi halaman', menu: 'Buka menu', closeMenu: 'Tutup menu', email: 'Email', contact: 'Hubungi saya', viewWork: 'Lihat karya pilihan', language: 'Bahasa', socialLinks: 'Tautan sosial', technologies: 'Teknologi yang digunakan', top: 'Atas',
@@ -38,7 +38,7 @@ const translations = {
     aboutIntro: 'Fokus utama saya adalah arsitektur frontend. Saya juga bekerja dengan sistem backend, test automation, dan cloud infrastructure.',
     aboutBody: 'Di Bank Rakyat Indonesia, saya membangun fondasi frontend bersama untuk QLola, platform corporate banking yang digunakan oleh lebih dari 20 tim. Sebelumnya, saya memimpin pengembangan sistem enterprise di LG Group dan menangani reliability selama cloud migration dalam tiga tahap.',
     education: 'Saya meraih gelar Bachelor of Science in Computing dari President University dengan Beasiswa Jababeka sebesar 70%.',
-    resume: 'Lihat résumé lengkap', theme: (next) => `Ganti ke mode ${next}`,
+    resume: 'Lihat résumé lengkap', github: 'Lihat profil GitHub', theme: (next) => `Ganti ke mode ${next}`,
   },
   zh: {
     skip: '跳至主要内容', home: '首页', navigation: '页内导航', menu: '打开菜单', closeMenu: '关闭菜单', email: '邮件', contact: '联系我', viewWork: '查看精选项目', language: '语言', socialLinks: '社交链接', technologies: '使用的技术', top: '顶部',
@@ -50,7 +50,7 @@ const translations = {
     aboutIntro: '我的主要方向是前端架构，同时也参与后端系统、测试自动化和云基础设施工作。',
     aboutBody: '在 Bank Rakyat Indonesia，我为 QLola 构建共享前端基础。该企业银行平台由 20 多个团队使用。此前，我在 LG Group 负责企业系统开发，并承担三阶段云迁移的可靠性工作。',
     education: '我获得了 President University 计算机科学理学学士学位，并获得 70% Jababeka 奖学金。',
-    resume: '查看完整简历', theme: (next) => `切换到${next}模式`,
+    resume: '查看完整简历', github: '查看 GitHub 主页', theme: (next) => `切换到${next}模式`,
   },
   ko: {
     skip: '본문으로 건너뛰기', home: '홈', navigation: '페이지 내 탐색', menu: '메뉴 열기', closeMenu: '메뉴 닫기', email: '이메일', contact: '이메일 보내기', viewWork: '주요 작업 보기', language: '언어', socialLinks: '소셜 링크', technologies: '사용 기술', top: '맨 위로',
@@ -62,7 +62,7 @@ const translations = {
     aboutIntro: '주요 분야는 프론트엔드 아키텍처입니다. 백엔드 시스템, 테스트 자동화, 클라우드 인프라 업무도 수행합니다.',
     aboutBody: 'Bank Rakyat Indonesia에서 20개 이상의 팀이 사용하는 기업 금융 플랫폼 QLola의 공유 프론트엔드 기반을 구축하고 있습니다. 이전에는 LG Group에서 엔터프라이즈 시스템 개발을 이끌고 3단계 클라우드 마이그레이션의 신뢰성을 담당했습니다.',
     education: 'President University에서 70% Jababeka 장학금을 받으며 컴퓨팅 이학사 학위를 취득했습니다.',
-    resume: '전체 이력서 보기', theme: (next) => `${next} 모드로 전환`,
+    resume: '전체 이력서 보기', github: 'GitHub 프로필 보기', theme: (next) => `${next} 모드로 전환`,
   },
   ja: {
     skip: 'コンテンツへ移動', home: 'ホーム', navigation: 'ページ内ナビゲーション', menu: 'メニューを開く', closeMenu: 'メニューを閉じる', email: 'メール', contact: 'メールする', viewWork: '主な実績を見る', language: '言語', socialLinks: 'SNSリンク', technologies: '使用技術', top: 'トップ',
@@ -74,7 +74,7 @@ const translations = {
     aboutIntro: '主な専門分野はフロントエンドアーキテクチャです。バックエンドシステム、テスト自動化、クラウドインフラにも携わっています。',
     aboutBody: 'Bank Rakyat Indonesia で、20以上のチームが利用する法人向け銀行プラットフォーム QLola の共通フロントエンド基盤を構築しています。以前は LG Group で企業システム開発をリードし、3段階のクラウド移行における信頼性を担当しました。',
     education: 'President University で 70% の Jababeka 奨学金を受け、コンピューティング理学士を取得しました。',
-    resume: '履歴書を見る', theme: (next) => `${next}モードに切り替え`,
+    resume: '履歴書を見る', github: 'GitHubプロフィールを見る', theme: (next) => `${next}モードに切り替え`,
   },
   'ar-SA': {
     skip: 'الانتقال إلى المحتوى', home: 'الرئيسية', navigation: 'التنقل داخل الصفحة', menu: 'فتح القائمة', closeMenu: 'إغلاق القائمة', email: 'البريد', contact: 'تواصل معي', viewWork: 'عرض الأعمال المختارة', language: 'اللغة', socialLinks: 'روابط التواصل', technologies: 'التقنيات المستخدمة', top: 'الأعلى',
@@ -86,7 +86,7 @@ const translations = {
     aboutIntro: 'تركيزي الأساسي هو معمارية frontend. أعمل أيضًا على أنظمة backend وtest automation وcloud infrastructure.',
     aboutBody: 'في Bank Rakyat Indonesia، أبني أسس frontend مشتركة لمنصة QLola المصرفية للشركات التي تستخدمها أكثر من 20 فريقًا. قبل ذلك، قدت تطوير أنظمة مؤسسية في LG Group وتوليت reliability خلال cloud migration من ثلاث مراحل.',
     education: 'حصلت على بكالوريوس العلوم في الحوسبة من President University بمنحة Jababeka بنسبة 70%.',
-    resume: 'عرض السيرة الذاتية', theme: (next) => `التبديل إلى الوضع ${next}`,
+    resume: 'عرض السيرة الذاتية', github: 'عرض ملف GitHub', theme: (next) => `التبديل إلى الوضع ${next}`,
   },
 }
 
@@ -538,16 +538,17 @@ function App() {
             <header className="section-heading"><p>03</p><h2 id="work-heading"><SectionTitle words={copy.sections.work} /></h2></header>
             <div className="section-content project-list" data-reveal>
               {projects.map((project, index) => (
-                <article className="project-row" key={project.title}>
+                <a className="project-row" href={project.href} target="_blank" rel="noreferrer" key={project.title}>
                   <p className="project-number" dir="ltr">0{index + 1}</p>
                   <div className="project-copy">
                     <p className="project-type" dir={contentDirection}>{localizedContent?.projectTypes[index] ?? project.type}</p>
-                    <h3 dir="ltr">{project.href ? <a href={project.href} target="_blank" rel="noreferrer">{project.title} <span>↗</span></a> : project.title}</h3>
+                    <h3 dir="ltr">{project.title} <span>↗</span></h3>
                     <p className="summary" dir={contentDirection}>{localizedContent?.projects[index] ?? project.description}</p>
                     <TagList items={project.tags} label={copy.technologies} />
                   </div>
-                </article>
+                </a>
               ))}
+              <a className="text-link" href="https://github.com/yohanesnaibaho303" target="_blank" rel="noreferrer">{copy.github} <span>↗</span></a>
             </div>
           </section>
 
