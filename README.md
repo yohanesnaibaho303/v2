@@ -31,6 +31,7 @@ Lighthouse 13.4.1 results captured on September 2, 2026, using an emulated deskt
 | 0.4 s | 0.8 s | 0.6 s | 0 ms | 0 |
 
 These are synthetic test results and may vary by device, network, and deployment.
+Run Lighthouse against `bun run build && bun run preview`; the development server includes React and Vite diagnostics that distort performance results.
 
 ## Run locally
 
