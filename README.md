@@ -18,6 +18,20 @@ Personal portfolio of [Yohanes Pratama Naibaho](https://yohanesnaibaho.com/), sh
 - CSS
 - Bun
 
+## Performance
+
+Lighthouse 13.4.1 results captured on September 2, 2026, using an emulated desktop with custom throttling:
+
+| Performance | Accessibility | Best Practices | SEO |
+| ---: | ---: | ---: | ---: |
+| 100 | 100 | 100 | 100 |
+
+| FCP | LCP | Speed Index | TBT | CLS |
+| ---: | ---: | ---: | ---: | ---: |
+| 0.4 s | 0.8 s | 0.6 s | 0 ms | 0 |
+
+These are synthetic test results and may vary by device, network, and deployment.
+
 ## Run locally
 
 Install [Bun](https://bun.sh/), then run:
