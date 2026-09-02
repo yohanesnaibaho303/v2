@@ -301,7 +301,6 @@ function App() {
   const glow = useRef(null)
   const atmosphere = useRef(null)
   const mobileMenu = useRef(null)
-  const closeTimer = useRef(null)
   const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || 'dark')
   const [language, setLanguage] = useState(() => translations[localStorage.getItem('language')] ? localStorage.getItem('language') : 'en')
   const [headerVisible, setHeaderVisible] = useState(true)
@@ -413,13 +412,15 @@ function App() {
       return
     }
     menu.setAttribute('data-closing', '')
-    closeTimer.current = window.setTimeout(() => menu.close(), 250)
   }
 
   const handleMenuClose = () => {
-    window.clearTimeout(closeTimer.current)
     mobileMenu.current?.removeAttribute('data-closing')
     setMenuOpen(false)
+  }
+
+  const finishMenuClose = (event) => {
+    if (event.target === event.currentTarget && event.propertyName === 'transform' && event.currentTarget.hasAttribute('data-closing')) event.currentTarget.close()
   }
 
   return (
@@ -465,7 +466,7 @@ function App() {
           </div>
         </header>
 
-        <dialog className="mobile-menu" id="mobile-menu" ref={mobileMenu} onClose={handleMenuClose} onCancel={(event) => { event.preventDefault(); closeMenu() }} aria-label={copy.navigation}>
+        <dialog className="mobile-menu" id="mobile-menu" ref={mobileMenu} onClose={handleMenuClose} onCancel={(event) => { event.preventDefault(); closeMenu() }} onTransitionEnd={finishMenuClose} aria-label={copy.navigation}>
           <div className="mobile-menu-bar">
             <a className="wordmark" href="#top" aria-label={copy.home} onClick={closeMenu}>YPN<span>®</span></a>
             <button className="menu-close" type="button" onClick={closeMenu} aria-label={copy.closeMenu} autoFocus><span /><span /></button>
