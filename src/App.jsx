@@ -183,6 +183,7 @@ const experience = [
     period: 'May 2026 — Present',
     role: 'Frontend Engineer',
     company: 'Bank Rakyat Indonesia',
+    href: 'https://bri.co.id/',
     summary: 'I build shared frontend foundations for QLola, a high-traffic corporate banking platform. The microfrontend framework, component library, and multilingual system are used by more than 20 teams.',
     tags: ['Next.js', 'TypeScript', 'Module Federation', 'Storybook'],
   },
@@ -190,6 +191,7 @@ const experience = [
     period: 'May 2024 — May 2026',
     role: 'Associate Software Engineer · Fullstack',
     company: 'LG Group',
+    href: 'https://www.lgcns.com/',
     summary: 'I led enterprise platform, MES, and smart-factory work across more than 10 global sites. I also handled reliability during a three-wave cloud migration that held 99.99% availability, latency below 52 ms, and an error rate below 0.1%.',
     tags: ['React', 'Spring Boot', '.NET', 'Microservices'],
   },
@@ -197,6 +199,7 @@ const experience = [
     period: 'Feb — May 2024',
     role: 'QA Automation Engineer',
     company: 'BPJS Kesehatan',
+    href: 'https://www.bpjs-kesehatan.go.id/',
     summary: 'I introduced UI and API automation to a team that had relied on manual testing. The work included reusable end-to-end suites, performance testing, and CI/CD runs on every commit.',
     tags: ['Selenium', 'Katalon', 'JMeter', 'CI/CD'],
   },
@@ -204,6 +207,7 @@ const experience = [
     period: 'Jan — Dec 2023',
     role: 'Software Developer',
     company: 'Knight Connections',
+    href: 'https://knight-connections.com/',
     summary: 'I built client websites, a regional inventory dashboard, and a Python script that migrated and cleaned more than 10,000 product records.',
     tags: ['MERN', 'Python', 'Laravel', 'MySQL'],
   },
@@ -516,14 +520,14 @@ function App() {
             <div className="section-content" data-reveal>
               <div className="experience-list">
                 {experience.map((item, index) => (
-                  <article className="experience-item" key={`${item.company}-${item.period}`}>
+                  <a className="experience-item" href={item.href} target="_blank" rel="noreferrer" key={`${item.company}-${item.period}`}>
                     <div className="experience-title">
                       <p className="period" dir="ltr">{item.period}</p>
-                      <div dir="ltr"><h3>{item.role}</h3><p className="company">{item.company}</p></div>
+                      <div dir="ltr"><h3>{item.role} <span className="experience-arrow" aria-hidden="true">↗</span></h3><p className="company">{item.company}</p></div>
                     </div>
                     <p className="summary" dir={contentDirection}>{localizedContent?.experience[index] ?? item.summary}</p>
                     <TagList items={item.tags} label={copy.technologies} />
-                  </article>
+                  </a>
                 ))}
               </div>
               <a className="text-link" href="/Yohanes-Pratama-Naibaho-resume.pdf" target="_blank">{copy.resume} <span>↗</span></a>
